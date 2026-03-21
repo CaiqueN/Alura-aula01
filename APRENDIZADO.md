@@ -156,6 +156,17 @@ Código-fonte (.java) → Compilador → Bytecode (.class) → JVM → Execuçã
 
 ---
 
+## O que aprendi nessa aula
+
+- Configurar o ambiente de desenvolvimento, instalando a **JDK 17** e a IDE **IntelliJ**
+- As diferenças entre JVM, JRE e JDK:
+  - **JVM (Java Virtual Machine)** — Máquina Virtual do Java responsável por executar o bytecode
+  - **JRE (Java Runtime Environment)** — Ambiente de Execução do Java que fornece as bibliotecas padrões para o JDK compilar o código e para a JVM executar o programa
+  - **JDK (Java Development Kit)** — Kit de Desenvolvimento Java responsável por compilar código-fonte em bytecode
+- Fazer o "Alô Mundo!" no Java e executar o primeiro programa pelo IntelliJ
+
+---
+
 ## Resumo dos Conceitos
 
 | Conceito | O que é |
