@@ -135,10 +135,31 @@ LocalDate dataNascimento = LocalDate.of(1995, 07, 28);
 
 ---
 
+---
+
+#### 9. Como Java funciona — Bytecode e JVM
+
+```java
+System.out.println("WORA (Write Once, Run Anywhere)");
+System.out.println("Bytecode é interpretado pela JVM");
+```
+
+- **Código-fonte** (`.java`) — linguagem de alto nível, legível para humanos
+- **Compilação** — o compilador Java transforma o `.java` em **Bytecode** (`.class`)
+- **Bytecode** — linguagem intermediária em hexadecimal, não legível para humanos nem para o SO
+- **JVM (Java Virtual Machine)** — máquina virtual que lê e executa o Bytecode em qualquer sistema operacional
+- **WORA** — *Write Once, Run Anywhere*: escreva o código uma vez e execute em qualquer lugar que tenha JVM
+
+```
+Código-fonte (.java) → Compilador → Bytecode (.class) → JVM → Execução
+```
+
+---
+
 ## Resumo dos Conceitos
 
 | Conceito | O que é |
-|---|---|
+| --- | --- |
 | `class` | Molde para criar objetos |
 | `main` | Ponto de entrada do programa |
 | `var` | Inferência de tipo automática |
