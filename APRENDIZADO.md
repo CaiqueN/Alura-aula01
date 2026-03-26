@@ -180,3 +180,247 @@ Código-fonte (.java) → Compilador → Bytecode (.class) → JVM → Execuçã
 | `toString` | Representa o objeto como texto |
 | `Scanner` | Lê entradas do usuário |
 | `LocalDate` | Representa datas |
+
+---
+
+## Aula 02 - Variáveis, Tipos Primitivos e Operadores Aritméticos
+
+### Conceitos aprendidos
+
+#### 1. Tipos primitivos em Java
+
+Java possui tipos primitivos para armazenar diferentes categorias de dados:
+
+```java
+int anoDeLancamento = 2022;       // número inteiro
+boolean incluindoNoAno = true;    // verdadeiro ou falso
+double notaDoFilme = 9.1;         // número com casas decimais
+```
+
+| Tipo | O que armazena | Exemplo |
+| --- | --- | --- |
+| `int` | Números inteiros | `2022`, `-5`, `0` |
+| `double` | Números decimais | `9.1`, `3.14` |
+| `boolean` | Verdadeiro ou falso | `true`, `false` |
+| `String` | Texto | `"Top Gun"` |
+
+---
+
+#### 1.1 Os oito tipos primitivos de Java
+
+Java possui exatamente oito tipos primitivos, que são os tipos de dados mais básicos e fundamentais da linguagem, utilizados para representar valores simples e definidos pela própria linguagem.
+
+##### `boolean`
+Representa valores lógicos, podendo assumir apenas dois valores: `true` ou `false`. Utilizado em expressões condicionais, loops e outros casos onde se deseja avaliar se uma condição é verdadeira ou falsa.
+
+```java
+boolean ativo = true;
+boolean expirado = false;
+```
+
+##### `byte`
+Representa valores numéricos inteiros de **8 bits**. Faixa de valores: **-128 a 127**.
+
+```java
+byte idade = 25;
+```
+
+##### `char`
+Representa caracteres individuais. Pode armazenar qualquer caractere Unicode e é delimitado por aspas simples (`''`).
+
+```java
+char letra = 'A';
+char simbolo = '@';
+```
+
+##### `short`
+Representa valores numéricos inteiros de **16 bits**. Faixa de valores: **-32.768 a 32.767**.
+
+```java
+short ano = 2026;
+```
+
+##### `int`
+Representa valores numéricos inteiros de **32 bits**. É o tipo mais utilizado para números inteiros em Java. Faixa de valores: **-2.147.483.648 a 2.147.483.647**.
+
+```java
+int populacao = 215000000;
+```
+
+##### `long`
+Representa valores numéricos inteiros de **64 bits**, utilizado para valores inteiros muito grandes. Faixa de valores: **-9.223.372.036.854.775.808 a 9.223.372.036.854.775.807**. O sufixo `L` é obrigatório.
+
+```java
+long distanciaEstrelas = 9_460_730_472_580_800L;
+```
+
+##### `float`
+Representa valores numéricos de ponto flutuante (com casas decimais) em **32 bits**. Pode representar números decimais com até **7 dígitos** de precisão. O sufixo `f` é obrigatório.
+
+```java
+float preco = 19.99f;
+```
+
+##### `double`
+Similar ao `float`, mas ocupa **64 bits** de memória e pode representar números decimais com até **15 dígitos** de precisão. É o tipo padrão para números decimais em Java.
+
+```java
+double pi = 3.141592653589793;
+```
+
+---
+
+##### Tabela comparativa dos tipos primitivos
+
+| Tipo | Bits | Faixa / Descrição |
+| --- | --- | --- |
+| `boolean` | — | `true` ou `false` |
+| `byte` | 8 | -128 a 127 |
+| `char` | 16 | Qualquer caractere Unicode |
+| `short` | 16 | -32.768 a 32.767 |
+| `int` | 32 | -2.147.483.648 a 2.147.483.647 |
+| `long` | 64 | -9.223.372.036.854.775.808 a 9.223.372.036.854.775.807 |
+| `float` | 32 | Até 7 dígitos decimais |
+| `double` | 64 | Até 15 dígitos decimais |
+
+---
+
+#### 2. Operadores Aritméticos
+
+Os operadores aritméticos realizam cálculos matemáticos entre valores numéricos:
+
+| Operador | Operação | Exemplo | Resultado |
+| --- | --- | --- | --- |
+| `+` | Adição | `5 + 3` | `8` |
+| `-` | Subtração | `10 - 4` | `6` |
+| `*` | Multiplicação | `2 * 6` | `12` |
+| `/` | Divisão | `10 / 2` | `5` |
+| `%` | Resto da divisão | `10 % 3` | `1` |
+
+```java
+int soma        = 5 + 3;   // 8
+int subtracao   = 10 - 4;  // 6
+int produto     = 2 * 6;   // 12
+int divisao     = 10 / 2;  // 5
+int resto       = 10 % 3;  // 1
+```
+
+> O operador `%` (módulo) retorna o **resto** da divisão inteira. Útil para verificar se um número é par (`n % 2 == 0`) ou para limitar valores dentro de um intervalo.
+
+---
+
+#### 3. Operadores de Atribuição Composta
+
+Combinam uma operação aritmética com a atribuição, simplificando o código:
+
+```java
+int valor1 = 10;
+valor1 += 15;  // equivalente a: valor1 = valor1 + 15  →  25
+```
+
+| Operador | Equivalente a |
+| --- | --- |
+| `+=` | `x = x + n` |
+| `-=` | `x = x - n` |
+| `*=` | `x = x * n` |
+| `/=` | `x = x / n` |
+| `%=` | `x = x % n` |
+
+---
+
+#### 4. Concatenação de String com variáveis
+
+O operador `+` também serve para unir texto com valores de variáveis:
+
+```java
+int anoDeLancamento = 2022;
+System.out.println("Ano de lançamento: " + anoDeLancamento);
+// Saída: Ano de lançamento: 2022
+```
+
+---
+
+#### 5. Formatação de Strings com `String.format`
+
+O método `String.format` permite construir Strings formatadas usando **placeholders** (marcadores de posição):
+
+```java
+String nome = "Maria";
+int idade = 30;
+double preco = 55.99;
+
+String mensagem = String.format("Nome: %s, Idade: %d, Preço: %.2f", nome, idade, preco);
+System.out.println(mensagem);
+// Saída: Nome: Maria, Idade: 30, Preço: 55,99
+```
+
+💡 Tipos mais usados
+
+| Placeholder | Tipo de dado | Exemplo |
+| --- | --- | --- |
+| `%s` | String | `nome` |
+| `%d` | inteiro | `idade`, `quantidade` |
+| `%.2f` | decimal | `55.99` |
+
+---
+
+#### 6. Casting
+
+Casting é a conversão de um tipo de dado em outro. Em Java, existem dois tipos:
+
+##### Casting implícito
+
+Realizado **automaticamente pelo compilador** quando o tipo de destino é maior e comporta todos os valores do tipo de origem:
+
+```java
+int x = 10;
+double y = x; // casting implícito
+```
+
+##### Casting explícito
+
+Necessário quando o tipo de destino é **menor ou incompatível** com o tipo de origem. Usa o operador de casting `(tipo)`:
+
+```java
+double x = 10.5;
+int y = (int) x; // casting explícito
+```
+
+> A parte decimal é **descartada** na conversão — no exemplo acima, `y` recebe o valor `10`.
+
+##### Tabela de conversões
+
+| De → Para | `byte` | `short` | `int` | `long` | `float` | `double` |
+| --- | --- | --- | --- | --- | --- | --- |
+| `byte` | — | implícito | implícito | implícito | implícito | implícito |
+| `short` | explícito | — | implícito | implícito | implícito | implícito |
+| `int` | explícito | explícito | — | implícito | implícito | implícito |
+| `long` | explícito | explícito | explícito | — | implícito | implícito |
+| `float` | explícito | explícito | explícito | explícito | — | implícito |
+| `double` | explícito | explícito | explícito | explícito | explícito | — |
+
+---
+
+### O que aprendi nessa aula
+
+- Declarar variáveis com os tipos primitivos `int`, `double` e `boolean`
+- Usar os cinco operadores aritméticos: `+`, `-`, `*`, `/` e `%`
+- Diferenciar divisão inteira de divisão com ponto flutuante
+- Usar operadores de atribuição composta (`+=`, `-=`, etc.) para simplificar operações
+- Concatenar texto com variáveis usando o operador `+`
+
+---
+
+### Resumo dos Conceitos — Aula 02
+
+| Conceito | O que é |
+| --- | --- |
+| `int` | Tipo para números inteiros |
+| `double` | Tipo para números decimais |
+| `boolean` | Tipo para verdadeiro/falso |
+| `+` | Adição (ou concatenação de texto) |
+| `-` | Subtração |
+| `*` | Multiplicação |
+| `/` | Divisão |
+| `%` | Resto da divisão |
+| `+=` | Atribuição com adição |

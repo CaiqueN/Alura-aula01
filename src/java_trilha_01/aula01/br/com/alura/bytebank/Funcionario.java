@@ -1,4 +1,4 @@
-package Aula01.br.com.alura.bytebank;
+package java_trilha_01.aula01.br.com.alura.bytebank;
 
 import java.time.LocalDate;
 
@@ -44,6 +44,6 @@ public class Funcionario {
                 ", matricula=" + getMatricula() +
                 ", dataNascimento=" + getDataNascimento() +
                 '}';
-}
+     }
 
 }

@@ -1,4 +1,4 @@
-package Aula01.br.com.alura.bytebank;
+package java_trilha_01.aula01.br.com.alura.bytebank;
 
 public class PrimeiraClasse {
     public static void main(String[] args) {

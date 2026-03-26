@@ -1,4 +1,4 @@
-package Aula01.br.com.alura.bytebank.exercicio;
+package java_trilha_01.aula01.br.com.alura.bytebank.exercicio;
 
 public class Soma {
     public static void main(String[] args) {

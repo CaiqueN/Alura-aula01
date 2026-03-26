@@ -1,4 +1,4 @@
-package Aula01.br.com.alura.bytebank;
+package java_trilha_01.aula01.br.com.alura.bytebank;
 
 import java.util.Scanner;
 
@@ -10,6 +10,9 @@ public class Saldo {
         double percentual = saldo * (10.0 / 100);
         var valorFinal = saldo + percentual;
         System.out.println("O saldo com reajuste de 10% é: " + valorFinal);
+
+        double media = (8.1 / 9.1);
+        System.out.println(media);
     }
 
 }
