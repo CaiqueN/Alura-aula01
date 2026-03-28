@@ -403,6 +403,14 @@ int y = (int) x; // casting explícito
 
 ### O que aprendi nessa aula
 
+- A trabalhar com **variáveis**: recurso utilizado para armazenar valores em memória
+- Sobre **tipos primitivos**:
+  - Inteiros: `byte`, `short`, `int`, `long`
+  - Ponto flutuante: `double` e `float`
+  - `char`: contém um único caractere
+  - `boolean`: recebe 2 valores, `true` ou `false`
+- Como representar textos em Java, utilizando a classe `String`
+- A realizar **casting** de valores, para resolver situações de tipos incompatíveis no momento de realizar um cálculo ou atribuição de uma variável
 - Declarar variáveis com os tipos primitivos `int`, `double` e `boolean`
 - Usar os cinco operadores aritméticos: `+`, `-`, `*`, `/` e `%`
 - Diferenciar divisão inteira de divisão com ponto flutuante
