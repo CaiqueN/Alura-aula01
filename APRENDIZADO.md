@@ -432,3 +432,207 @@ int y = (int) x; // casting explícito
 | `/` | Divisão |
 | `%` | Resto da divisão |
 | `+=` | Atribuição com adição |
+
+---
+
+## Aula 03 - Controle de Fluxo: Condicionais e Laços de Repetição
+
+### Conceitos aprendidos
+
+#### 1. Leitura de dados com `Scanner`
+
+A classe `Scanner` permite capturar diferentes tipos de entrada do usuário:
+
+```java
+Scanner scanner = new Scanner(System.in);
+
+String anime = scanner.nextLine();   // lê uma String (linha completa)
+int ano      = scanner.nextInt();    // lê um número inteiro
+double nota  = scanner.nextDouble(); // lê um número decimal
+
+scanner.close(); // boa prática: fechar o Scanner ao final
+```
+
+| Método | Tipo lido |
+| --- | --- |
+| `nextLine()` | `String` (linha completa) |
+| `nextInt()` | `int` |
+| `nextDouble()` | `double` |
+
+---
+
+#### 2. Estruturas condicionais — `if / else if / else`
+
+Permitem executar blocos de código conforme uma condição:
+
+```java
+int anoDeLancamento = 2022;
+boolean incluidoNoPlano = true;
+String plano = "Plus";
+double notaDoFilme = 8.1;
+
+if (anoDeLancamento >= 2022) {
+    System.out.println("Lançamento mais vistos!");
+} else {
+    System.out.println("Filme que vale a pena assistir!");
+}
+
+if (incluidoNoPlano == true && plano.equals("Plus")) {
+    System.out.println("acesso liberado");
+} else {
+    System.out.println("deve pagar a entrada");
+}
+```
+
+- `&&` — operador lógico **E**: ambas as condições precisam ser verdadeiras
+- `||` — operador lógico **OU**: basta uma condição ser verdadeira
+- `.equals()` — método para comparar o conteúdo de Strings (não use `==` para Strings)
+
+---
+
+#### 3. Estrutura condicional alternativa — `switch`
+
+Ideal quando há várias opções para um mesmo valor:
+
+```java
+int dia = scanner.nextInt();
+String nomeDia = "";
+
+switch (dia) {
+    case 1:
+        nomeDia = "Domingo";
+        break;
+    case 2:
+        nomeDia = "Segunda-feira";
+        break;
+    // ...
+    default:
+        System.out.println("Valor inválido");
+        break;
+}
+```
+
+- Cada `case` representa um valor possível
+- `break` encerra o bloco para evitar que os casos seguintes sejam executados
+- `default` é executado quando nenhum `case` corresponde ao valor
+
+---
+
+#### 4. Laço de repetição — `for`
+
+Usado quando o número de repetições é conhecido:
+
+```java
+double mediaAvaliacao = 0;
+
+for (int i = 0; i < 3; i++) {
+    System.out.println("Digite uma nota para o anime");
+    double nota = scanner.nextDouble();
+    mediaAvaliacao += nota;
+}
+
+System.out.println("Media de avaliacao: " + mediaAvaliacao / 3);
+```
+
+Estrutura: `for (inicialização; condição; incremento)`
+
+- **inicialização** — `int i = 0`: define o contador inicial
+- **condição** — `i < 3`: enquanto verdadeira, o laço continua
+- **incremento** — `i++`: atualiza o contador a cada iteração
+
+---
+
+#### 5. Laço de repetição — `while`
+
+Usado quando o número de repetições não é conhecido previamente:
+
+```java
+double mediaAvaliacao = 0;
+double nota = 0;
+int total = 0;
+
+while (nota != -1) {
+    System.out.println("Digite uma nota ou -1 para encerrar");
+    nota = scanner.nextDouble();
+
+    if (nota != -1) {
+        mediaAvaliacao += nota;
+        total++;
+    }
+}
+
+System.out.println("Media de avaliacao: " + mediaAvaliacao / total);
+```
+
+- O laço continua enquanto a condição for verdadeira
+- Útil para menus e entradas com quantidade indefinida
+
+---
+
+#### 6. Combinando condicionais e laços — Jogo de Adivinhação
+
+Exemplo prático que une `while`, `if/else if` e `Random`:
+
+```java
+int numeroGerado = new Random().nextInt(100);
+int tentativas = 0;
+int numeroDigitado = 0;
+
+while (tentativas < 5) {
+    System.out.println("Digite um número de 1 a 100");
+    numeroDigitado = scanner.nextInt();
+    tentativas++;
+}
+
+if (numeroDigitado < numeroGerado) {
+    System.out.println("O número digitado é menor que o gerado");
+} else if (numeroDigitado > numeroGerado) {
+    System.out.println("O número digitado é maior que o gerado");
+}
+
+if (tentativas == 5 && numeroDigitado != numeroGerado) {
+    System.out.println("Você não conseguiu acertar. O número era: " + numeroGerado);
+}
+```
+
+- `new Random().nextInt(100)` — gera um número aleatório entre 0 e 99
+
+---
+
+### Desafios da Aula 03
+
+| Desafio | Conceito principal |
+| --- | --- |
+| `NumeroMaior` | `if / else if / else` para comparar dois números |
+| `ParOuImpar` | Operador `%` para verificar paridade |
+| `Positivo` | `if / else` para classificar um número |
+| `Tabuada` | Laço `for` para gerar a tabuada |
+| `Fatorial` | Laço `for` com acumulador multiplicativo |
+| `CalculadoraArea` | `while` + `if/else if` formando um menu interativo |
+
+---
+
+### O que aprendi nessa aula
+
+- Capturar diferentes tipos de entrada do usuário com `Scanner` (`nextLine`, `nextInt`, `nextDouble`)
+- Usar estruturas condicionais `if / else if / else` para controlar o fluxo do programa
+- Usar `switch` como alternativa ao `if` quando há múltiplos valores possíveis para uma variável
+- Usar o laço `for` quando a quantidade de repetições é conhecida
+- Usar o laço `while` quando a condição de parada depende de um evento externo (ex: usuário digitar -1)
+- Combinar laços e condicionais para criar programas interativos como menus e jogos
+
+---
+
+### Resumo dos Conceitos — Aula 03
+
+| Conceito | O que é |
+| --- | --- |
+| `Scanner` | Lê entradas do usuário |
+| `if / else` | Executa blocos com base em condições |
+| `switch` | Alternativa ao `if` para múltiplos casos |
+| `for` | Laço com número de repetições definido |
+| `while` | Laço com repetições baseadas em condição |
+| `&&` / `\|\|` | Operadores lógicos E / OU |
+| `%` | Resto da divisão (útil para par/ímpar) |
+| `Random` | Gera números aleatórios |
+| `break` | Encerra um `case` no `switch` |
