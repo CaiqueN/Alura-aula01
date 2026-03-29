@@ -636,3 +636,137 @@ if (tentativas == 5 && numeroDigitado != numeroGerado) {
 | `%` | Resto da divisão (útil para par/ímpar) |
 | `Random` | Gera números aleatórios |
 | `break` | Encerra um `case` no `switch` |
+
+---
+
+## Aula 04 - Exercício Final: Sistema Bancário Interativo
+
+### Contexto
+
+Exercício integrador que une todos os conceitos das aulas anteriores (variáveis, tipos, condicionais, laços e `Scanner`) para construir um pequeno sistema de conta bancária via terminal.
+
+---
+
+### O que foi construído — `Conta.java`
+
+Um menu interativo que exibe os dados do cliente e permite realizar operações sobre o saldo:
+
+```java
+String nome  = "Pedro Laranjeira";
+String conta = "corrente";
+double saldo = 1599.99;
+int opcao    = 0;
+
+// Exibe cabeçalho com dados do cliente
+System.out.println("=======================");
+System.out.println("Nome do cliente" + nome);
+System.out.println("Tipo de conta"  + conta);
+System.out.println("Saldo em conta" + saldo);
+System.out.println("=======================");
+
+// Text Block — menu com múltiplas linhas
+String menu = """
+         ** Digite sua opção **
+             1 - Consultar saldo
+             2 - Transferir valor
+             3 - Receber valor
+             4 - Sair
+         """;
+
+Scanner scanner = new Scanner(System.in);
+
+while (opcao != 4) {
+    System.out.println(menu);
+    opcao = scanner.nextInt();
+
+    if (opcao == 1) {
+        System.out.println("O saldo atualizado é: " + saldo);
+
+    } else if (opcao == 2) {
+        System.out.println("Por gentileza digite o saldo para transferência?");
+        double valor = scanner.nextInt();
+        if (valor > saldo) {
+            System.out.println("Não há saldo em conta para essa transferência");
+        } else {
+            saldo -= valor;
+            System.out.println("Novo saldo: " + saldo);
+        }
+
+    } else if (opcao == 3) {
+        System.out.println("Saldo recebido");
+        double valor = scanner.nextDouble();
+        saldo += valor;
+        System.out.println("Novo saldo: " + saldo);
+
+    } else if (opcao != 4) {
+        System.out.println("Essa opção é inválida, por favor digite uma opção");
+    }
+}
+```
+
+---
+
+### Conceitos aplicados no exercício
+
+#### Text Block (Java 13+)
+
+Permite escrever Strings com múltiplas linhas de forma legível, usando `"""`:
+
+```java
+String menu = """
+     1 - Consultar saldo
+     2 - Transferir valor
+     """;
+```
+
+#### Menu interativo com `while`
+
+O laço mantém o programa ativo até o usuário escolher a opção de saída (`4`):
+
+```java
+while (opcao != 4) {
+    // exibe menu e processa escolha
+}
+```
+
+#### Validação de saldo antes de transferir
+
+Condição extra dentro do bloco `if` para evitar saldo negativo:
+
+```java
+if (valor > saldo) {
+    System.out.println("Não há saldo em conta para essa transferência");
+} else {
+    saldo -= valor;
+}
+```
+
+#### Operações sobre o saldo
+
+| Opção | Operação | Operador |
+| --- | --- | --- |
+| 2 — Transferir | Débito no saldo | `saldo -= valor` |
+| 3 — Receber | Crédito no saldo | `saldo += valor` |
+
+---
+
+### O que aprendi nessa aula
+
+- Integrar variáveis, condicionais e laços em um programa completo e funcional
+- Usar **Text Block** (`"""`) para escrever menus e mensagens multilinha de forma limpa
+- Construir um menu interativo com `while` que só encerra quando o usuário escolher sair
+- Validar entradas do usuário antes de executar operações (ex: verificar saldo antes de transferir)
+- Usar operadores de atribuição composta (`+=`, `-=`) para atualizar o saldo dinamicamente
+
+---
+
+### Resumo dos Conceitos — Aula 04
+
+| Conceito | O que é |
+| --- | --- |
+| Text Block `"""` | String multilinha introduzida no Java 13 |
+| `while` com condição de saída | Mantém o menu ativo até o usuário sair |
+| `if / else if` aninhado | Valida a opção e depois valida o valor |
+| `saldo -= valor` | Debita um valor do saldo |
+| `saldo += valor` | Credita um valor ao saldo |
+| Validação de entrada | Checa condições antes de executar a operação |
