@@ -13,7 +13,7 @@ public class Condicional {
             System.out.println("Filme que vale a pena assistir!");
         }
 
-        if (incluidoNoPlano == true && plano.equals("Plus")) {
+        if (incluidoNoPlano && plano.equals("Plus")) {
             System.out.println("acesso liberado");
         }else {
             System.out.println("deve pagar a entrada");

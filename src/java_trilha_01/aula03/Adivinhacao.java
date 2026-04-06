@@ -14,12 +14,12 @@ public class Adivinhacao {
             System.out.println("Digite um número de 1 a 100");
             numeroDigitado = scanner.nextInt();
             tentativas++;
-        }
 
-        if(numeroDigitado < numeroGerado){
-            System.out.println("O número digitado é menor que numero gerado");
-        } else if (numeroDigitado > numeroGerado) {
-            System.out.println("O número digitado é maior que numero gerado");
+            if(numeroDigitado < numeroGerado){
+                System.out.println("O número digitado é menor que numero gerado");
+            } else if (numeroDigitado > numeroGerado) {
+                System.out.println("O número digitado é maior que numero gerado");
+            }
         }
 
         if(tentativas == 5 && numeroDigitado != numeroGerado){

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class AlternativaCondicional {
     public static void main(String[] args) {
-        System.out.println("Digite um valor: ");
+        System.out.println("Digite digitar o número da semana: ");
         Scanner scanner = new Scanner(System.in);
         int dia = scanner.nextInt();
 
