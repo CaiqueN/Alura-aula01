@@ -5,7 +5,6 @@ import br.com.alura.trilha01.bytebank.aula01.exercicio.Estudos;
 import br.com.alura.trilha01.bytebank.aula01.exercicio.Perfil;
 import br.com.alura.trilha01.bytebank.aula01.exercicio.Soma;
 import br.com.alura.trilha01.bytebank.aula01.exercicio.Subtracao;
-import br.com.alura.trilha01.bytebank.aula02.Main;
 import br.com.alura.trilha01.bytebank.aula02.desafio.DesafioPratico;
 import br.com.alura.trilha01.bytebank.aula02.desafio.Dolares;
 import br.com.alura.trilha01.bytebank.aula03.Adivinhacao;
@@ -46,7 +45,7 @@ public class Main {
             case 3  -> Perfil.main(new String[]{});
             case 4  -> Soma.main(new String[]{});
             case 5  -> Subtracao.main(new String[]{});
-            case 6  -> Main.main(new String[]{});
+            case 6  -> br.com.alura.trilha01.bytebank.aula02.Main.main(new String[]{});
             case 7  -> Dolares.main(new String[]{});
             case 8  -> DesafioPratico.main(new String[]{});
             case 9  -> Adivinhacao.main(new String[]{});
