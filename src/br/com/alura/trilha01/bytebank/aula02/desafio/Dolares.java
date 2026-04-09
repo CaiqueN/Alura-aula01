@@ -1,7 +1,7 @@
 package br.com.alura.trilha01.bytebank.aula02.desafio;
 
 public class Dolares {
-    public static void main(String[] args) {
+    public static void executar() {
         double conversaoDolares = 4.94;
         double valorDolares = 27.00;
 
@@ -9,4 +9,7 @@ public class Dolares {
         System.out.println("Valor final em real: " + valorReal);
     }
 
+    public static void main(String[] args) {
+        executar();
+    }
 }

@@ -1,7 +1,7 @@
 package br.com.alura.trilha01.bytebank.aula02;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void executar() {
         System.out.println("Esse é o Screen Match");
         System.out.println("Filme: Top Gun: Maverick");
 
@@ -31,5 +31,9 @@ public class Main {
         double a = 10.5;
         int b =(int) a;
 
+    }
+
+    public static void main(String[] args) {
+        executar();
     }
 }

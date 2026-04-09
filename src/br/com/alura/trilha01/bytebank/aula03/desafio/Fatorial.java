@@ -3,7 +3,7 @@ package br.com.alura.trilha01.bytebank.aula03.desafio;
 import java.util.Scanner;
 
 public class Fatorial {
-    public static void main(String[] args) {
+    public static void executar() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Digite um número: ");
@@ -16,5 +16,9 @@ public class Fatorial {
         }
 
         System.out.println("O fatorial de " + numero + " é: " + fatorial);
+    }
+
+    public static void main(String[] args) {
+        executar();
     }
 }

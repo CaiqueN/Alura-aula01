@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Adivinhacao {
-    public static void main(String[] args) {
+    public static void executar() {
         Scanner scanner = new Scanner(System.in);
         int numeroGerado = new Random().nextInt(100);
         int tentativas = 0;
@@ -25,5 +25,9 @@ public class Adivinhacao {
         if(tentativas == 5 && numeroDigitado != numeroGerado){
             System.out.println("Você não conseguiu acertar o número em 05 tentativas. O número era: " + numeroGerado);
         }
+    }
+
+    public static void main(String[] args) {
+        executar();
     }
 }

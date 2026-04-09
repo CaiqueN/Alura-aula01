@@ -3,7 +3,7 @@ package br.com.alura.trilha01.bytebank.aula04;
 import java.util.Scanner;
 
 public class Conta {
-    public static void main(String[] args) {
+    public static void executar() {
         String nome = "Pedro Laranjeira";
         String conta = "corrente";
         double saldo = 1599.99;
@@ -50,5 +50,9 @@ public class Conta {
             }
           }
         }
+
+    public static void main(String[] args) {
+        executar();
     }
+}
 

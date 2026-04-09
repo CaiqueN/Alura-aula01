@@ -1,7 +1,7 @@
 package br.com.alura.trilha01.bytebank.aula01.exercicio;
 
 public class Estudos {
-    public static void main(String[] args) {
+    public static void executar() {
         System.out.println("O código que estamos escrevendo, é uma linguagem de alto nível para o ser humano." +
                 " Nós fazemos comandos que são inteligíveis para nós, é o que chamamos de código-fonte, o arquivo .java.");
         System.out.println("WORA (Write Once, Run Anywhere), escreve uma vez e executa em qualquer lugar");
@@ -9,6 +9,9 @@ public class Estudos {
         System.out.println("Mas existe alguém que entenda isso JVM (Java Virtual Machine");
         System.out.println("JVM é uma maquina de mentira que compreende uma linguagem de máquina de mentira " +
                 "que o pessoal de Java chama de Bytecode, o código binário específico do Java");
+    }
 
+    public static void main(String[] args) {
+        executar();
     }
 }

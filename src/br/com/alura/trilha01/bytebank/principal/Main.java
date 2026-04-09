@@ -40,18 +40,18 @@ public class Main {
         int opcao = scanner.nextInt();
 
         switch (opcao) {
-            case 1  -> Principal.main(new String[]{});
-            case 2  -> Estudos.main(new String[]{});
-            case 3  -> Perfil.main(new String[]{});
-            case 4  -> Soma.main(new String[]{});
-            case 5  -> Subtracao.main(new String[]{});
-            case 6  -> br.com.alura.trilha01.bytebank.aula02.Main.main(new String[]{});
-            case 7  -> Dolares.main(new String[]{});
-            case 8  -> DesafioPratico.main(new String[]{});
-            case 9  -> Adivinhacao.main(new String[]{});
-            case 10 -> Tabuada.main(new String[]{});
-            case 11 -> Fatorial.main(new String[]{});
-            case 12 -> Conta.main(new String[]{});
+            case 1  -> Principal.executar();
+            case 2  -> Estudos.executar();
+            case 3  -> Perfil.executar();
+            case 4  -> Soma.executar();
+            case 5  -> Subtracao.executar();
+            case 6  -> br.com.alura.trilha01.bytebank.aula02.Main.executar();
+            case 7  -> Dolares.executar();
+            case 8  -> DesafioPratico.executar();
+            case 9  -> Adivinhacao.executar();
+            case 10 -> Tabuada.executar();
+            case 11 -> Fatorial.executar();
+            case 12 -> Conta.executar();
             default -> System.out.println("Opção inválida.");
         }
     }
