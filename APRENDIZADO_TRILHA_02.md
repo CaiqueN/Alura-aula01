@@ -194,6 +194,16 @@ A definição dos atributos de uma classe é um processo de **abstração**: ide
 
 ---
 
+### Nessa aula, você aprendeu
+
+- O que é uma **classe**, sua estrutura, como criar e por que isso é um conceito fundamental na orientação a objetos
+- O que são **atributos**: as "características" de um objeto, e a definir e visualizar esses valores
+- A **instanciar objetos**
+- Sobre os **métodos** (ou comportamentos) de um objeto
+- A pensar nas entidades do mundo real em forma de **objetos**, que possuem características (**atributos**) e comportamentos ou ações (**métodos**)
+
+---
+
 ### Resumo dos Conceitos — Aula 01
 
 | Conceito | O que é |
