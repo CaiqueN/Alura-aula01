@@ -5,6 +5,7 @@ import br.com.alura.trilha02.screenmatch.aula01.desafio.principal.CalculadoraMai
 import br.com.alura.trilha02.screenmatch.aula01.desafio.principal.CarroMain;
 import br.com.alura.trilha02.screenmatch.aula01.desafio.principal.MusicaMain;
 import br.com.alura.trilha02.screenmatch.aula01.desafio.principal.Principal;
+import br.com.alura.trilha02.screenmatch.aula01.principal.desafio.*;
 
 import java.util.Scanner;
 
@@ -20,6 +21,12 @@ public class Main {
         System.out.println("4 - Aluno");
         System.out.println("5 - Música");
         System.out.println("6 - Carro");
+        System.out.println("-- Desafio --");
+        System.out.println("7 - Conta Bancária");
+        System.out.println("8 - Idade Pessoa");
+        System.out.println("9 - Aluno");
+        System.out.println("10 - Produto com Desconto");
+        System.out.println("11 - Livro");
 
         int opcao = scanner.nextInt();
 
@@ -30,6 +37,11 @@ public class Main {
             case 4 -> AlunoMain.executar();
             case 5 -> MusicaMain.executar();
             case 6 -> CarroMain.executar();
+            case 7 -> ContaBancariaMain.executar();
+            case 8 -> IdadePessoaMain.executar();
+            case 9 -> AlunoDoisMain.executar();
+            case 10 -> ProdutoMain.executar();
+            case 11 -> LivroMain.executar();
             default -> System.out.println("Opção inválida.");
         }
 

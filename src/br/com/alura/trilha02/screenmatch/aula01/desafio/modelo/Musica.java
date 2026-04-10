@@ -1,13 +1,13 @@
 package br.com.alura.trilha02.screenmatch.aula01.desafio.modelo;
 
 public class Musica {
-    String titulo;
-    String artista;
-    int anoDeLancamento;
+    public String titulo;
+    public String artista;
+    public int anoDeLancamento;
     double somaAvaliacao;
     int numAvaliacoes;
 
-    void exibirFichaTecnica() {
+    public void exibirFichaTecnica() {
         System.out.println("Titulo da musica" + titulo);
         System.out.println("Artista" + artista);
         System.out.println("Ano de lançamento" + anoDeLancamento);
@@ -15,11 +15,11 @@ public class Musica {
 
     }
 
-    void avalia(double nota) {
+    public void avalia(double nota) {
         somaAvaliacao += nota;
         numAvaliacoes ++;
     }
 
-    double media () {
+    public double media() {
       return   somaAvaliacao / numAvaliacoes;}
 }

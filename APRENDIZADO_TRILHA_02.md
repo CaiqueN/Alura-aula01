@@ -472,3 +472,246 @@ public class PrincipalFilme {
 | Método com retorno | Método que processa dados e devolve um resultado com `return` |
 
 ---
+
+## Encapsulamento — Modificadores de Acesso, Getters, Setters e Construtores
+
+### Conceitos aprendidos
+
+#### 1. O problema de atributos públicos
+
+Quando os atributos são `public`, qualquer código externo pode modificá-los diretamente, sem nenhum controle:
+
+```java
+ContaBancaria conta = new ContaBancaria();
+conta.saldo = -9999; // ninguém impede isso!
+```
+
+Isso viola o princípio do encapsulamento: o objeto não tem controle sobre seus próprios dados.
+
+---
+
+#### 2. `private` — ocultando os dados
+
+O modificador `private` restringe o acesso ao atributo para dentro da própria classe. Nenhuma outra classe consegue ler ou modificar o atributo diretamente.
+
+```java
+public class ContaBancaria {
+    private int numeroConta;
+    private int saldo;
+    public String titular; // ainda público (sem restrição)
+}
+```
+
+| Modificador | Quem pode acessar |
+| --- | --- |
+| `public` | Qualquer classe |
+| `private` | Apenas a própria classe |
+
+---
+
+#### 3. Getters e Setters — acessando atributos privados com controle
+
+Para permitir que código externo leia ou altere atributos `private`, criamos métodos específicos chamados **getter** (leitura) e **setter** (escrita).
+
+```java
+// Getter — retorna o valor do atributo
+public int getSaldo() {
+    return saldo;
+}
+
+// Setter — define o valor do atributo
+public void setSaldo(int saldo) {
+    this.saldo = saldo;
+}
+```
+
+**Convenção de nomenclatura:**
+- Getter: `get` + nome do atributo com inicial maiúscula → `getSaldo()`
+- Setter: `set` + nome do atributo com inicial maiúscula → `setSaldo(int saldo)`
+
+---
+
+#### 4. A palavra-chave `this`
+
+Dentro de um setter, o parâmetro e o atributo têm o mesmo nome. O `this` resolve a ambiguidade, referenciando o **atributo do objeto atual**:
+
+```java
+public void setSaldo(int saldo) {
+    this.saldo = saldo; // this.saldo = atributo da classe; saldo = parâmetro do método
+}
+```
+
+| Expressão | O que representa |
+| --- | --- |
+| `this.saldo` | O atributo `saldo` do objeto |
+| `saldo` (sem `this`) | O parâmetro recebido pelo método |
+
+---
+
+#### 5. Construtor — inicializando o objeto na criação
+
+O construtor é um método especial executado automaticamente no momento do `new`. Ele permite inicializar atributos obrigatórios já na criação do objeto.
+
+```java
+public class Produto {
+    private String nome;
+    private double preco;
+
+    // Construtor
+    public Produto(String nome, double preco) {
+        this.nome = nome;
+        this.preco = preco;
+    }
+}
+```
+
+Uso:
+```java
+Produto produto = new Produto("Celular", 2000.0); // já inicializado
+```
+
+**Diferença: com e sem construtor**
+
+| Abordagem | Como inicializa |
+| --- | --- |
+| Sem construtor | `produto.setNome("Celular")` após o `new` |
+| Com construtor | `new Produto("Celular", 2000.0)` — obrigatório na criação |
+
+---
+
+#### 6. Métodos de negócio encapsulados
+
+Com encapsulamento, a lógica que altera o estado do objeto fica **dentro da própria classe**, não no código externo:
+
+```java
+public void aplicarDesconto(double percentual) {
+    double desconto = preco * (percentual / 100);
+    preco -= desconto;
+}
+```
+
+O código externo só chama o método — a implementação está protegida dentro da classe:
+
+```java
+produto.aplicarDesconto(10);
+System.out.println(produto.getPreco()); // preço já com desconto aplicado
+```
+
+---
+
+### Desafios praticados
+
+#### Desafio — `ContaBancaria`
+
+```java
+ContaBancaria conta = new ContaBancaria();
+conta.setNumeroConta(1234);
+conta.setSaldo(100);
+conta.setTitular("Italo");
+
+System.out.println(conta.getNumeroConta()); // 1234
+System.out.println(conta.getSaldo());       // 100
+System.out.println(conta.getTitular());     // Italo
+
+conta.setSaldo(1600);
+System.out.println(conta.getSaldo());       // 1600
+```
+
+#### Desafio — `IdadePessoa`
+
+```java
+IdadePessoa info = new IdadePessoa();
+info.setIdade(38);
+info.setNome("Pedro");
+
+System.out.println(info.getNome());  // Pedro
+System.out.println(info.getIdade()); // 38
+```
+
+#### Desafio — `Produto` (com construtor e desconto)
+
+```java
+Produto produto = new Produto("Celular", 2000.0);
+
+System.out.println(produto.getNome());  // Celular
+System.out.println(produto.getPreco()); // 2000.0
+
+produto.aplicarDesconto(10);
+System.out.println(produto.getPreco()); // 1800.0
+```
+
+#### Desafio — `Aluno` (encapsulado, com cálculo de média)
+
+Classe com quatro notas privadas e um método que calcula a média automaticamente.
+
+| Atributo | Tipo | O que representa |
+| --- | --- | --- |
+| `nome` | `String` | Nome do aluno |
+| `nota` / `nota2` / `nota3` / `nota4` | `double` | Quatro notas bimestrais |
+
+```java
+public double mediaCalculada() {
+    return (nota + nota2 + nota3 + nota4) / 4;
+}
+```
+
+Uso em `AlunoDoisMain`:
+```java
+Aluno aluno = new Aluno();
+aluno.setNome("Italo");
+aluno.setNota(7.5);
+aluno.setNota2(8.9);
+aluno.setNota3(10.0);
+aluno.setNota4(6.5);
+
+System.out.println(aluno.getNome());          // Italo
+System.out.println(aluno.mediaCalculada());   // 8.225
+```
+
+> Diferença em relação ao `Aluno` da Aula 01: aqui os atributos são `private`, o acesso é feito via getters/setters, e a lógica de média fica encapsulada dentro da própria classe.
+
+#### Desafio — `Livro`
+
+Classe simples com dois atributos privados e getters/setters.
+
+| Atributo | Tipo | O que representa |
+| --- | --- | --- |
+| `titulo` | `String` | Título do livro |
+| `autor` | `String` | Nome do autor |
+
+```java
+Livro lib = new Livro();
+lib.setTitulo("Novel Naruto");
+lib.setAutor("Kishimoto");
+
+System.out.println(lib.getTitulo()); // Novel Naruto
+System.out.println(lib.getAutor());  // Kishimoto
+```
+
+---
+
+### O que aprendi nessa seção
+
+- Por que atributos `public` são perigosos — qualquer código externo pode corromper o estado do objeto
+- Como usar `private` para proteger os dados da classe
+- Como criar **getters** e **setters** para fornecer acesso controlado a atributos privados
+- A convenção de nomenclatura `get`/`set` + nome com inicial maiúscula
+- O uso de `this` para diferenciar atributo da classe e parâmetro do método com mesmo nome
+- Como criar um **construtor** para inicializar atributos obrigatórios na criação do objeto
+- Como encapsular lógica de negócio em métodos da própria classe (ex: `aplicarDesconto`)
+
+---
+
+### Resumo dos Conceitos — Encapsulamento
+
+| Conceito | O que é |
+| --- | --- |
+| `private` | Modificador que restringe o acesso ao atributo à própria classe |
+| `public` | Modificador que permite acesso de qualquer lugar |
+| Getter | Método que retorna o valor de um atributo privado (`getNome()`) |
+| Setter | Método que define o valor de um atributo privado (`setNome(String nome)`) |
+| `this` | Referência ao objeto atual — diferencia atributo do parâmetro de mesmo nome |
+| Construtor | Método especial chamado no `new` para inicializar o objeto |
+| Método de negócio | Lógica que altera o estado do objeto encapsulada dentro da própria classe |
+
+---
