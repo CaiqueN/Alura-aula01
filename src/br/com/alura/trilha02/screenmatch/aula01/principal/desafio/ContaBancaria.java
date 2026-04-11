@@ -4,9 +4,23 @@ public class ContaBancaria {
     private int numeroConta;
     private int saldo;
     public String titular;
+    public int depositar;
 
     public int getNumeroConta() {
         return numeroConta;
+    }
+
+    public void depositar(int valor) {
+        if (valor > 0) {
+            saldo += valor;
+            System.out.println("Depósito realizado com sucesso");
+        } else {
+            System.out.println("Valor inválido");
+        }
+    }
+
+    public int getDepositar(){
+        return depositar;
     }
 
     public void setNumeroConta(int numeroConta) {
@@ -17,7 +31,7 @@ public class ContaBancaria {
         return saldo;
     }
 
-    public void setSaldo(int saldo) {
+    private void setSaldo(int saldo) {
         this.saldo = saldo;
     }
 

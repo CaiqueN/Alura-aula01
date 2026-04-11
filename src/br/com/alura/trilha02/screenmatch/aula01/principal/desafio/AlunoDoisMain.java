@@ -5,7 +5,7 @@ public class AlunoDoisMain {
         Aluno aluno = new Aluno();
 
         aluno.setNome("Italo");
-        aluno.setNota(7.5);
+        aluno.setNota(1);
         aluno.setNota2(8.9);
         aluno.setNota3(10.0);
         aluno.setNota4(6.5);
