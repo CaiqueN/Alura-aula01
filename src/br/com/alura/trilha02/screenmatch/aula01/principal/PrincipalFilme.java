@@ -1,6 +1,7 @@
 package br.com.alura.trilha02.screenmatch.aula01.principal;
 
 import br.com.alura.trilha02.screenmatch.aula01.modelo.Filme;
+import br.com.alura.trilha03.Serie;
 
 public class PrincipalFilme {
     public static void executar() {
@@ -23,6 +24,15 @@ public class PrincipalFilme {
         System.out.println(filme.media());
 
         System.out.println(filme.media());
+
+        Serie lost = new Serie();
+        lost.setNome("Lost");
+        lost.setAnoDeLancamento(2009);
+        lost.exibeFichaTecnica();
+        lost.setTemporadas(10);
+        lost.setEpisodiosPorTemporada(10);
+        lost.setMinutosPorEpisodio(50);
+        System.out.println("Duração do filme: " + lost.getDuracaoEmMinutos());
 
     }
 
