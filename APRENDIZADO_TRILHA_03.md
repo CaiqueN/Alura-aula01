@@ -104,3 +104,88 @@ No Java, as anotações são definidas com o uso do símbolo `@` seguido do nome
 Diversas especificações e frameworks Java, como Hibernate, Bean Validation e Spring, utilizam anotações. Por exemplo, no Bean Validation a anotação `@NotNull` é usada para validar que um atributo não seja nulo.
 
 As anotações são muito úteis e comuns em aplicações Java, sendo importante estar familiarizado com esse recurso, pois certamente será utilizado bastante em projetos Java.
+
+## Conclusão — O que aprendi nessa trilha
+
+- **Código duplicado é um problema real**: quando várias classes repetem a mesma lógica, qualquer correção precisa ser feita em todos os lugares. A herança resolve isso centralizando o comportamento na superclasse.
+- **`extends`**: palavra-chave usada para indicar que uma classe herda de outra. Ex: `class ContaCorrente extends ContaBancaria`.
+- **`@Override`**: anotação opcional que indica que um método está sobrescrevendo o da superclasse. Usar é uma boa prática pois o compilador avisa se você errou o nome do método.
+- **Polimorfismo**: permite tratar objetos de subclasses diferentes de forma uniforme, evitando métodos duplicados e `if/else` desnecessários.
+
+---
+
+## Dicas de estudo — Laços de repetição
+
+### `while` com negação (`!`)
+
+O `!` aparece quando a função retorna o **oposto** do que você precisa para continuar o loop.
+
+A pergunta que resolve sempre: **"quero continuar enquanto isso é verdade ou falso?"**
+- Verdade → sem `!`
+- Falso → com `!`
+
+```java
+// continua enquanto NÃO for primo (função retorna true = é primo)
+while (!verificarPrimalidade(numero)) {
+    numero++;
+}
+
+// continua enquanto TEM próximo elemento
+while (scanner.hasNext()) { ... }
+```
+
+Dica: leia o `while` em português. `while (!verificarPrimalidade(n))` → *"enquanto não for primo, continua"*.
+
+---
+
+### Poderia usar `for` no lugar do `while`?
+
+Sim, quando **você sabe quantas vezes vai iterar** ou tem um contador claro. Quando **não sabe quantas vezes vai iterar** (como buscar o próximo primo), o `while` é mais natural.
+
+| Situação | Use |
+|---|---|
+| Sabe o número de iterações | `for` |
+| Não sabe quantas iterações | `while` |
+| Precisa executar ao menos uma vez | `do while` |
+
+```java
+// for — itera um número fixo de vezes
+for (int i = 2; i <= 50; i++) { ... }
+
+// while — itera até achar um primo (quantidade desconhecida)
+while (!verificarPrimalidade(numero)) {
+    numero++;
+}
+```
+
+---
+
+### Diferença entre `while` e `do while`
+
+| | `while` | `do while` |
+|---|---|---|
+| Checa a condição | antes de executar | depois de executar |
+| Executa ao menos uma vez? | não | **sim** |
+
+```java
+// while — pode nunca executar se a condição já for falsa
+while (condicao) {
+    // executa 0 ou mais vezes
+}
+
+// do while — executa ao menos uma vez, mesmo que a condição seja falsa
+do {
+    // executa 1 ou mais vezes
+} while (condicao);
+```
+
+**Exemplo prático do `do while`**: menu de opções que sempre mostra ao menos uma vez antes de verificar se o usuário quer sair.
+
+```java
+int opcao;
+do {
+    System.out.println("1 - Continuar");
+    System.out.println("0 - Sair");
+    opcao = scanner.nextInt();
+} while (opcao != 0);
+```

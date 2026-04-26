@@ -20,7 +20,7 @@ public class Carro {
 
     }
 
-    private double calcularMaiorPreco() {
+    private double  calcularMaiorPreco() {
         double maiorPreco = precoAno1;
         if(precoAno2 > maiorPreco){
             maiorPreco = precoAno2;
