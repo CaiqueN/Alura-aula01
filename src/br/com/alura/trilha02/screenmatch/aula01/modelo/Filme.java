@@ -1,8 +1,9 @@
 package br.com.alura.trilha02.screenmatch.aula01.modelo;
 
 import br.com.alura.trilha03.Titulo;
+import br.com.alura.trilha04.Classificavel;
 
-public class Filme extends Titulo {
+public class Filme extends Titulo implements Classificavel {
     String diretor;
 
     public String getDiretor() {
@@ -16,5 +17,10 @@ public class Filme extends Titulo {
     @Override
     public int getDuracaoEmMinutos() {
         return super.getDuracaoEmMinutos();
+    }
+
+    @Override
+    public int getClassificacao() {
+        return (int) (media()) /2;
     }
 }
