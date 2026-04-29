@@ -1,0 +1,30 @@
+src/br/com/alura/trilha04/desafio/CalculoGeometrico.java
+  h_73f86f3e881776 1-6
+src/br/com/alura/trilha04/desafio/TesteCalcularArea.java
+  h_73f86f3e881776 1-10
+src/br/com/alura/trilha04/desafio/CalculadoraRetangular.java
+  h_73f86f3e881776 1-16
+src/br/com/alura/trilha04/desafio/ConversaoFinanceira.java
+  h_73f86f3e881776 1-5
+src/br/com/alura/trilha04/desafio/TesteTabuadaMain.java
+  h_73f86f3e881776 1-8
+src/br/com/alura/trilha04/desafio/TesteConversaoMain.java
+  h_73f86f3e881776 1-8
+src/br/com/alura/trilha04/desafio/ConversorMoeda.java
+  h_73f86f3e881776 1-11
+src/br/com/alura/trilha04/desafio/Tabuada.java
+  h_73f86f3e881776 1-5
+src/br/com/alura/trilha04/desafio/TabuadaMultiplicacao.java
+  h_73f86f3e881776 1-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "1aed715dcbe8a6e85c1f5080a8fda91698612d40",
+  "prompts": {},
+  "humans": {
+    "h_73f86f3e881776": {
+      "author": "candasilva_meli"
+    }
+  }
+}
