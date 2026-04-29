@@ -8,6 +8,9 @@ import br.com.alura.trilha02.screenmatch.aula01.desafio.principal.Principal;
 import br.com.alura.trilha02.screenmatch.aula01.principal.desafio.*;
 import br.com.alura.trilha03.ContaMain;
 import br.com.alura.trilha03.desafio.*;
+import br.com.alura.trilha04.desafio.TesteCalcularArea;
+import br.com.alura.trilha04.desafio.TesteConversaoMain;
+import br.com.alura.trilha04.desafio.TesteTabuadaMain;
 
 import java.util.Scanner;
 
@@ -34,6 +37,9 @@ public class Main {
         System.out.println("14 - Animal");
         System.out.println("15 - Conta Bancária e Conta Corrente (herança)");
         System.out.println("16 - Numero primo");
+        System.out.println("17 - Conversão");
+        System.out.println("18 - Calcular area");
+        System.out.println("19 - Tabuada");
 
         int opcao = scanner.nextInt();
 
@@ -54,6 +60,9 @@ public class Main {
             case 14 -> AnimalMain.executar();
             case 15 -> TesteContaBancariaMain.executar();
             case 16 -> TesteNumeroPrimo.executar();
+            case 17 -> TesteConversaoMain.executar();
+            case 18 -> TesteCalcularArea.executar();
+            case 19 -> TesteTabuadaMain.executar();
 
             default -> System.out.println("Opção inválida.");
         }
