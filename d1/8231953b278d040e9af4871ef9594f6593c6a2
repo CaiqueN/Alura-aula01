@@ -1,0 +1,28 @@
+src/br/com/alura/trilha02/screenmatch/aula01/principal/Main.java
+  h_73f86f3e881776 11-13,40-42,63-65
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "d18231953b278d040e9af4871ef9594f6593c6a2",
+  "prompts": {
+    "819fbdcea1e4a42b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c6620f64-ad38-42fd-8fec-a6475674e103",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "candasilva_meli",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 7,
+      "overriden_lines": 0
+    }
+  },
+  "humans": {
+    "h_73f86f3e881776": {
+      "author": "candasilva_meli"
+    }
+  }
+}
