@@ -1,0 +1,34 @@
+src/br/com/alura/trilha03/desafio/ConversorTemperaturaPadrao.java
+  h_73f86f3e881776 1-14
+src/br/com/alura/trilha03/desafio/ConversorTemperatura.java
+  h_73f86f3e881776 1-6
+src/br/com/alura/trilha02/screenmatch/aula01/principal/Main.java
+  h_73f86f3e881776 43,67
+src/br/com/alura/trilha03/desafio/TesteConversorPadraoMain.java
+  h_73f86f3e881776 1-15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "374821f48508fb36f1581dca465cff7ac7e0261b",
+  "prompts": {
+    "56fb6db0343a501c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8d86273e-22b2-45df-955e-e39384489d94",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "candasilva_meli",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 19,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    }
+  },
+  "humans": {
+    "h_73f86f3e881776": {
+      "author": "candasilva_meli"
+    }
+  }
+}
