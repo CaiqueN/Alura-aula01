@@ -40,6 +40,7 @@ public class Main {
         System.out.println("17 - Conversão");
         System.out.println("18 - Calcular area");
         System.out.println("19 - Tabuada");
+        System.out.println("20 - Conversor");
 
         int opcao = scanner.nextInt();
 
@@ -63,6 +64,7 @@ public class Main {
             case 17 -> TesteConversaoMain.executar();
             case 18 -> TesteCalcularArea.executar();
             case 19 -> TesteTabuadaMain.executar();
+            case 20 -> TesteConversorPadraoMain.executar();
 
             default -> System.out.println("Opção inválida.");
         }
