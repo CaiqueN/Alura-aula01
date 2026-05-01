@@ -1,4 +1,4 @@
-package br.com.alura.trilha04;
+package br.com.alura.trilha04.aula;
 
 import br.com.alura.trilha02.screenmatch.aula01.modelo.Filme;
 import br.com.alura.trilha03.Serie;

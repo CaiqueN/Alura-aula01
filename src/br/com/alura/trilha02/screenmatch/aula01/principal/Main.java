@@ -11,6 +11,7 @@ import br.com.alura.trilha03.desafio.*;
 import br.com.alura.trilha04.desafio.TesteCalcularArea;
 import br.com.alura.trilha04.desafio.TesteConversaoMain;
 import br.com.alura.trilha04.desafio.TesteTabuadaMain;
+import br.com.alura.trilha04.desafiofinal.principal.TesteAudioMain;
 
 import java.util.Scanner;
 
@@ -41,6 +42,7 @@ public class Main {
         System.out.println("18 - Calcular area");
         System.out.println("19 - Tabuada");
         System.out.println("20 - Conversor");
+        System.out.println("21 - Desafio final");
 
         int opcao = scanner.nextInt();
 
@@ -65,6 +67,7 @@ public class Main {
             case 18 -> TesteCalcularArea.executar();
             case 19 -> TesteTabuadaMain.executar();
             case 20 -> TesteConversorPadraoMain.executar();
+            case 21 -> TesteAudioMain.executar();
 
             default -> System.out.println("Opção inválida.");
         }

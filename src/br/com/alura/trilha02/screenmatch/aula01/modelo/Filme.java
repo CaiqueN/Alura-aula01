@@ -1,7 +1,7 @@
 package br.com.alura.trilha02.screenmatch.aula01.modelo;
 
 import br.com.alura.trilha03.Titulo;
-import br.com.alura.trilha04.Classificavel;
+import br.com.alura.trilha04.aula.Classificavel;
 
 public class Filme extends Titulo implements Classificavel {
     String diretor;

@@ -1,4 +1,4 @@
-package br.com.alura.trilha04;
+package br.com.alura.trilha04.aula;
 
 public class Produto implements Tributavel {
 
