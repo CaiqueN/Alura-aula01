@@ -9,7 +9,7 @@ public class Principal {
 
         Filme meuFilme = new Filme();
         meuFilme.setNome("O Poderoso Chefão");
-        meuFilme.setAnoDeLancamento(1972);
+        meuFilme.setAnoDeLancamento(2000);
         meuFilme.setDuracaoMinutos(175);
         meuFilme.avaliacao(8);
         meuFilme.avaliacao(10);
@@ -24,7 +24,7 @@ public class Principal {
 
         Serie lost = new Serie();
         lost.setNome("Lost");
-        lost.setAnoDeLancamento(2004);
+        lost.setAnoDeLancamento(2001);
         lost.setTemporadas(6);
         lost.setEpisodiosPorTemporada(24);
         lost.setMinutosPorEpisodio(42);

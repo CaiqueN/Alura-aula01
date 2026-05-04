@@ -8,6 +8,11 @@ public abstract class Titulo {
     private int totalDeAvaliacao;
     private int duracaoMinutos;
 
+    public Titulo(int anoDeLancamento, String nome) {
+        this.anoDeLancamento = anoDeLancamento;
+        this.nome = nome;
+    }
+
     public int getTotalDeAvaliacao() {
         return totalDeAvaliacao;
     }

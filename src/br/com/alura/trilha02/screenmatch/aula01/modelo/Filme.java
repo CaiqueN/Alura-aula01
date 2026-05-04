@@ -6,6 +6,10 @@ import br.com.alura.trilha04.aula.Classificavel;
 public class Filme extends Titulo implements Classificavel {
     String diretor;
 
+    public Filme(int anoDeLancamento, String nome) {
+        super(anoDeLancamento, nome);
+    }
+
     public String getDiretor() {
         return diretor;
     }
@@ -22,5 +26,10 @@ public class Filme extends Titulo implements Classificavel {
     @Override
     public int getClassificacao() {
         return (int) (media()) /2;
+    }
+
+    @Override
+    public String toString() {
+        return "Filme: " + this.getNome() + "(" + this.getAnoDeLancamento() + ")";
     }
 }
