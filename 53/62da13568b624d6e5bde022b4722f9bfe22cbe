@@ -1,0 +1,74 @@
+src/br/com/alura/trilha04/aula/Principal.java
+  f6fb23ec8b1099db 10,16,21
+src/br/com/alura/trilha02/screenmatch/aula01/principal/PrincipalComListas.java
+  h_73f86f3e881776 1,4-17,19,22-25
+  0713b2a320e9ed8c 18,20-21
+src/br/com/alura/listas/colecoes/trilha01/atividade3/ProdutoPerecivel.java
+  h_73f86f3e881776 1-12
+src/br/com/alura/trilha02/screenmatch/aula01/principal/Main.java
+  h_73f86f3e881776 46,72
+src/br/com/alura/listas/colecoes/trilha01/main/Main.java
+  h_73f86f3e881776 3,6,19-20,28-29
+  f6fb23ec8b1099db 4,17,26
+src/br/com/alura/trilha01/bytebank/principal/Main.java
+  h_73f86f3e881776 14,40,57
+src/br/com/alura/listas/colecoes/trilha01/atividade2/Produto.java
+  h_73f86f3e881776 1-3,5-7,10-13,16-17,20-42
+  f6fb23ec8b1099db 4,8-9,14-15,18-19
+src/br/com/alura/listas/colecoes/trilha01/atividade3/TesteProdutoPerecivel.java
+  h_73f86f3e881776 1-11
+src/br/com/alura/listas/colecoes/trilha01/atividade2/TesteProduto.java
+  h_73f86f3e881776 1-15,17-26
+  f6fb23ec8b1099db 16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "5362da13568b624d6e5bde022b4722f9bfe22cbe",
+  "prompts": {
+    "0713b2a320e9ed8c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "877a1f22-7334-48cc-80b1-8d166919fbc9",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "candasilva_meli",
+      "messages": [],
+      "total_additions": 3,
+      "total_deletions": 3,
+      "accepted_lines": 3,
+      "overriden_lines": 0
+    },
+    "0f62a7e9ed71786c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d087c63-fcb2-472f-9369-1753d7dc1596",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "candasilva_meli",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 8,
+      "overriden_lines": 0
+    },
+    "f6fb23ec8b1099db": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "43e6442a-fa69-450f-9ac3-7670468c3b91",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "candasilva_meli",
+      "messages": [],
+      "total_additions": 44,
+      "total_deletions": 57,
+      "accepted_lines": 36,
+      "overriden_lines": 0
+    }
+  },
+  "humans": {
+    "h_73f86f3e881776": {
+      "author": "candasilva_meli"
+    }
+  }
+}
