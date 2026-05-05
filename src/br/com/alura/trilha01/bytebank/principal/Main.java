@@ -11,6 +11,7 @@ import br.com.alura.trilha01.bytebank.aula03.Adivinhacao;
 import br.com.alura.trilha01.bytebank.aula03.desafio.Fatorial;
 import br.com.alura.trilha01.bytebank.aula03.desafio.Tabuada;
 import br.com.alura.trilha01.bytebank.aula04.Conta;
+import br.com.alura.trilha02.screenmatch.aula01.principal.PrincipalFilme;
 
 import java.util.Scanner;
 
@@ -36,6 +37,7 @@ public class Main {
         System.out.println("11 - Fatorial");
         System.out.println("-- Aula 04 --");
         System.out.println("12 - Conta Bancária");
+        System.out.println("13 - Principal Filme");
 
         int opcao = scanner.nextInt();
 
@@ -52,6 +54,7 @@ public class Main {
             case 10 -> Tabuada.executar();
             case 11 -> Fatorial.executar();
             case 12 -> Conta.executar();
+            case 13 -> PrincipalFilme.executar();
             default -> System.out.println("Opção inválida.");
         }
     }

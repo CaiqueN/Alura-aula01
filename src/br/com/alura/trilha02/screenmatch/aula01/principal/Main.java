@@ -43,6 +43,7 @@ public class Main {
         System.out.println("19 - Tabuada");
         System.out.println("20 - Conversor");
         System.out.println("21 - Desafio final");
+        System.out.println("22 - Principal com listas");
 
         int opcao = scanner.nextInt();
 
@@ -68,6 +69,7 @@ public class Main {
             case 19 -> TesteTabuadaMain.executar();
             case 20 -> TesteConversorPadraoMain.executar();
             case 21 -> TesteAudioMain.executar();
+            case 22 -> PrincipalComListas.executar();
 
             default -> System.out.println("Opção inválida.");
         }

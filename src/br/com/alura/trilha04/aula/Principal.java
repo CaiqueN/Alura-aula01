@@ -7,24 +7,18 @@ public class Principal {
 
     public static void main(String[] args) {
 
-        Filme meuFilme = new Filme();
-        meuFilme.setNome("O Poderoso Chefão");
-        meuFilme.setAnoDeLancamento(2000);
+        Filme meuFilme = new Filme(2000, "O Poderoso Chefão");
         meuFilme.setDuracaoMinutos(175);
         meuFilme.avaliacao(8);
         meuFilme.avaliacao(10);
         meuFilme.avaliacao(5);
 
-        Filme outroFilme = new Filme();
-        outroFilme.setNome("Dragon Ball Super Broly");
-        outroFilme.setAnoDeLancamento(2019);
+        Filme outroFilme = new Filme(2019, "Dragon Ball Super Broly");
         outroFilme.setDuracaoMinutos(100);
         outroFilme.avaliacao(7);
         outroFilme.avaliacao(9);
 
-        Serie lost = new Serie();
-        lost.setNome("Lost");
-        lost.setAnoDeLancamento(2001);
+        Serie lost = new Serie(2001, "Lost");
         lost.setTemporadas(6);
         lost.setEpisodiosPorTemporada(24);
         lost.setMinutosPorEpisodio(42);

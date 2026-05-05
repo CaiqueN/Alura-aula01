@@ -1,7 +1,9 @@
 package br.com.alura.listas.colecoes.trilha01.main;
 
-import br.com.alura.listas.colecoes.trilha01.ListaExemplo;
+import br.com.alura.listas.colecoes.trilha01.atividade3.TesteProdutoPerecivel;
+import br.com.alura.listas.colecoes.trilha01.aula.TesteListaExemplo;
 import br.com.alura.listas.colecoes.trilha01.atividade.Pessoa;
+import br.com.alura.listas.colecoes.trilha01.atividade2.TesteProduto;
 
 import java.util.Scanner;
 
@@ -12,15 +14,19 @@ public class Main {
         System.out.println("=== Trilha 01 - Java Listas e Coleções ===");
         System.out.println("Escolha um exercício:");
         System.out.println("-- Aula 01 --");
-        System.out.println("1 -Array");
+        System.out.println("1 - Array");
         System.out.println("2 - atividade Pessoa");
+        System.out.println("3 - atividade Produto");
+        System.out.println("4 - atividade Produto Perecivel");
 
 
         int opcao = scanner.nextInt();
 
         switch (opcao) {
-            case 1  -> ListaExemplo.executar();
+            case 1  -> TesteListaExemplo.executar();
             case 2 -> Pessoa.executar();
+            case 3 -> TesteProduto.executar();
+            case 4 -> TesteProdutoPerecivel.executar();
 
             default -> System.out.println("Opção inválida.");
         }
