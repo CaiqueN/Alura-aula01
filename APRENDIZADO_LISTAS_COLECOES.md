@@ -2,6 +2,120 @@
 
 ---
 
+## Map e HashMap
+
+### Map
+Interface que associa **chave → valor**. Útil para buscas, atualizações e recuperação de dados por uma chave única.
+
+```java
+Map<String, Integer> idades = new HashMap<>();
+idades.put("Ana", 25);
+idades.put("João", 30);
+
+System.out.println(idades.get("Ana")); // 25
+```
+
+---
+
+### HashMap
+Implementação mais comum do `Map`, usa tabela hash internamente.
+
+- Acesso, inserção e remoção em tempo **O(1)** — não depende do tamanho da coleção
+- **Não garante ordem** de inserção dos elementos
+- Chaves são únicas — colocar a mesma chave sobrescreve o valor anterior
+
+```java
+Map<String, String> capitais = new HashMap<>();
+capitais.put("Brasil", "Brasília");
+capitais.put("Argentina", "Buenos Aires");
+
+System.out.println(capitais.get("Brasil")); // Brasília
+System.out.println(capitais.containsKey("Chile")); // false
+```
+
+---
+
+### Resumo rápido
+
+| | Map | HashMap |
+|---|---|---|
+| O que é | Interface | Classe concreta |
+| Ordem | não garante | não garante |
+| Performance | — | O(1) |
+| Chaves duplicadas | não permite | não permite |
+
+> Mesma lógica do `List` x `ArrayList`: declare com `Map`, instancie com `HashMap`.
+
+```java
+Map<String, Integer> mapa = new HashMap<>();
+```
+
+---
+
+## Implementações de List
+
+### ArrayList
+Array dinâmico — o mais usado no dia a dia.
+- Acesso rápido por índice (`lista.get(0)`)
+- Inserção/remoção no meio é mais lenta (precisa reorganizar o array)
+- Use quando você **lê e percorre** a lista com frequência
+
+```java
+List<String> lista = new ArrayList<>();
+lista.add("Ana");
+lista.add("João");
+System.out.println(lista.get(0)); // Ana
+```
+
+---
+
+### LinkedList
+Lista encadeada — cada elemento aponta para o próximo.
+- Inserção/remoção em qualquer posição é rápida
+- Acesso por índice é mais lento (precisa percorrer do início)
+- Use quando você **insere e remove** elementos com frequência
+
+```java
+List<String> lista = new LinkedList<>();
+lista.add("Ana");
+lista.add("João");
+```
+
+---
+
+### Vector
+Igual ao `ArrayList`, mas **sincronizado** (seguro para múltiplas threads).
+- Mais lento por causa da sincronização
+- Na prática raramente usado — prefira `ArrayList` + controle manual de thread se precisar
+
+---
+
+### Stack
+Pilha **LIFO** — último a entrar, primeiro a sair.
+- `push()` adiciona no topo
+- `pop()` remove do topo
+- Use quando a ordem de processamento deve ser invertida
+
+```java
+Stack<String> pilha = new Stack<>();
+pilha.push("primeiro");
+pilha.push("segundo");
+System.out.println(pilha.pop()); // segundo
+```
+
+---
+
+### Resumo rápido
+
+| Classe | Melhor para |
+|---|---|
+| `ArrayList` | leitura e iteração |
+| `LinkedList` | muita inserção/remoção |
+| `Vector` | ambiente multi-thread (raro) |
+| `Stack` | ordem LIFO |
+
+---
+
 ## Construtores e Herança — Refatoração
 
 ### Antes da refatoração
@@ -86,6 +200,75 @@ public Titulo(String nome, int anoDeLancamento) { ... }
 - Uma classe pode ter **mais de um construtor** (sobrecarga), desde que os parâmetros sejam diferentes
 - Construtores podem fazer **validações**, não só atribuições
 - `get` e `set` ainda são necessários mesmo com construtor — o construtor define na criação, o `set` permite alterar depois, o `get` permite ler
+
+---
+
+## foreach, casting e instanceof
+
+### Percorrer um ArrayList com foreach
+
+Para cada elemento da lista, o loop pega um item de cada vez sem precisar de índice:
+
+```java
+ArrayList<String> nomes = new ArrayList<>();
+nomes.add("Ana");
+nomes.add("João");
+
+for (String nome : nomes) {
+    System.out.println(nome);
+}
+// Ana
+// João
+```
+
+> Leia como: "para cada `nome` dentro de `nomes`, faça..."
+
+---
+
+### Casting — converter um objeto para outro tipo compatível
+
+Quando você tem um objeto de um tipo pai e sabe que na verdade ele é um tipo filho, pode fazer o casting para acessar os métodos do filho:
+
+```java
+Animal animal = new Cachorro(); // tipo declarado: Animal | objeto real: Cachorro
+
+Cachorro cachorro = (Cachorro) animal; // casting
+cachorro.latir(); // agora tem acesso aos métodos de Cachorro
+```
+
+> Atenção: se o objeto real **não for** um `Cachorro`, o Java lança `ClassCastException` em tempo de execução.
+
+---
+
+### instanceof — verificar o tipo real de um objeto
+
+Antes de fazer o casting, use `instanceof` para garantir que o objeto é do tipo esperado:
+
+```java
+Animal animal = new Cachorro();
+
+if (animal instanceof Cachorro) {
+    Cachorro cachorro = (Cachorro) animal;
+    cachorro.latir();
+}
+```
+
+Combinando os três conceitos:
+
+```java
+ArrayList<Animal> lista = new ArrayList<>();
+lista.add(new Cachorro());
+lista.add(new Gato());
+
+for (Animal animal : lista) {
+    if (animal instanceof Cachorro) {
+        Cachorro c = (Cachorro) animal;
+        c.latir();
+    }
+}
+```
+
+> `instanceof` evita o `ClassCastException` ao checar o tipo antes de converter.
 
 ---
 

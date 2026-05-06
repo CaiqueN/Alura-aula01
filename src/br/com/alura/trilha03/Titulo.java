@@ -1,6 +1,6 @@
 package br.com.alura.trilha03;
 
-public abstract class Titulo {
+public class Titulo implements Comparable<Titulo>{
     private String nome;
     private int anoDeLancamento;
     private boolean incluindoPlano;
@@ -77,5 +77,15 @@ public abstract class Titulo {
 
     public int getDuracaoEmMinutos() {
         return duracaoMinutos;
+    }
+
+    @Override
+    public String toString() {
+        return nome + " (" + anoDeLancamento + ")";
+    }
+
+    @Override
+    public int compareTo(Titulo outroTitulo) {
+        return this.getNome().compareTo(outroTitulo.getNome());
     }
 }
