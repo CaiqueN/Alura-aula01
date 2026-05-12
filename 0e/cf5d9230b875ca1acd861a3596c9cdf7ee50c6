@@ -1,0 +1,105 @@
+src/br/com/alura/listas/colecoes/trilha01/projetofinal/CartaoDeCredito.java
+  h_f4ce0c4b576d47 1-4,8-40
+  s_400f444626a77d::t_0c397e4873d7ab 5-7
+src/br/com/alura/listas/colecoes/trilha01/produto/Produto.java
+  s_400f444626a77d::t_39d708eafc348e 1-42
+src/br/com/alura/listas/colecoes/trilha01/forma/Forma.java
+  s_400f444626a77d::t_39d708eafc348e 1-6
+src/br/com/alura/listas/colecoes/trilha01/desafio/InterfaceArrayList.java
+  h_73f86f3e881776 1-20
+src/br/com/alura/listas/colecoes/trilha01/contabancaria/ContaBancaria.java
+  s_400f444626a77d::t_39d708eafc348e 1-19
+src/br/com/alura/listas/colecoes/trilha01/heranca/Cachorro.java
+  s_400f444626a77d::t_39d708eafc348e 1-14
+src/br/com/alura/listas/colecoes/trilha01/projetofinal/Compras.java
+  h_f4ce0c4b576d47 1-31
+src/br/com/alura/listas/colecoes/trilha01/projetofinal/TestarCartao.java
+  h_f4ce0c4b576d47 1-44
+src/br/com/alura/listas/colecoes/trilha01/precomedio/Produto.java
+  s_400f444626a77d::t_39d708eafc348e 1-29
+src/br/com/alura/listas/colecoes/trilha01/forma/Circulo.java
+  s_400f444626a77d::t_39d708eafc348e 1-10
+src/br/com/alura/listas/colecoes/trilha01/aula/TesteListaExemplo.java
+  f6fb23ec8b1099db 1-22
+src/br/com/alura/listas/colecoes/trilha01/desafio/Ordenacao.java
+  h_73f86f3e881776 1-21
+src/br/com/alura/listas/colecoes/trilha01/arraylist/TesteArrayListStrings.java
+  s_400f444626a77d::t_39d708eafc348e 1-16
+src/br/com/alura/listas/colecoes/trilha01/forma/TestarForma.java
+  s_400f444626a77d::t_39d708eafc348e 1-21
+src/br/com/alura/listas/colecoes/trilha01/hashmap/ExemploHashMap.java
+  h_73f86f3e881776 1-29
+src/br/com/alura/listas/colecoes/trilha01/contabancaria/TestarContaBancaria.java
+  s_400f444626a77d::t_39d708eafc348e 1-26
+src/br/com/alura/listas/colecoes/trilha01/produtoperecivel/ProdutoPerecivel.java
+  s_400f444626a77d::t_39d708eafc348e 1-12
+src/br/com/alura/listas/colecoes/trilha01/produtoperecivel/TesteProdutoPerecivel.java
+  s_400f444626a77d::t_39d708eafc348e 1-11
+src/br/com/alura/listas/colecoes/trilha01/forma/Quadrado.java
+  s_400f444626a77d::t_39d708eafc348e 1-10
+src/br/com/alura/listas/colecoes/trilha01/main/Main.java
+  s_400f444626a77d::t_f968d1f090e311 3-8,10-11
+  h_73f86f3e881776 12-14,34-36,51-53
+  h_f4ce0c4b576d47 37
+APRENDIZADO_LISTAS_COLECOES.md
+  s_400f444626a77d::t_7dbd101e8be013 323-431
+src/br/com/alura/listas/colecoes/trilha01/heranca/Animal.java
+  s_400f444626a77d::t_39d708eafc348e 1-4
+src/br/com/alura/listas/colecoes/trilha01/pessoa/Pessoa.java
+  s_400f444626a77d::t_39d708eafc348e 1-57
+src/br/com/alura/listas/colecoes/trilha01/desafio/UsoPolimorfismo.java
+  h_73f86f3e881776 1-27
+src/br/com/alura/listas/colecoes/trilha01/precomedio/TesteProduto2.java
+  s_400f444626a77d::t_39d708eafc348e 1-23
+src/br/com/alura/listas/colecoes/trilha01/produto/TesteProduto.java
+  s_400f444626a77d::t_39d708eafc348e 1-26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "0ecf5d9230b875ca1acd861a3596c9cdf7ee50c6",
+  "prompts": {
+    "ad3a032b0b2bdb22": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0a30686c-dfc9-4f60-96f9-6dedaf27abea",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "candasilva_meli <caique.ndasilva@mercadolivre.com>",
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    },
+    "f6fb23ec8b1099db": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "43e6442a-fa69-450f-9ac3-7670468c3b91",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "candasilva_meli",
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 22,
+      "overriden_lines": 0
+    }
+  },
+  "humans": {
+    "h_73f86f3e881776": {
+      "author": "candasilva_meli"
+    },
+    "h_f4ce0c4b576d47": {
+      "author": "candasilva_meli <caique.ndasilva@mercadolivre.com>"
+    }
+  },
+  "sessions": {
+    "s_400f444626a77d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "37bab055-404a-4714-96cc-3dd1d5634ea4",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "candasilva_meli <caique.ndasilva@mercadolivre.com>"
+    }
+  }
+}
