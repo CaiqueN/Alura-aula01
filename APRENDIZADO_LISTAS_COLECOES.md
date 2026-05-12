@@ -320,3 +320,112 @@ Porque `Aluno extends Pessoa`. A lógica é:
 > Todo aluno é uma pessoa, mas nem toda pessoa é um aluno.
 
 Por isso `Pessoa` é a superclasse (pai) e `Aluno` é a subclasse (filho).
+
+---
+
+## Projeto Final — Sistema de Compras com Cartão de Crédito
+
+### Objetivo
+
+Aplicar listas e ordenação em um sistema real: um cartão de crédito que registra compras e exibe um extrato ordenado.
+
+---
+
+### Estrutura do projeto
+
+| Classe | Responsabilidade |
+|---|---|
+| `CartaoDeCredito` | Guarda o limite, saldo e a lista de compras |
+| `Compras` | Representa uma compra com descrição e valor |
+| `TestarCartao` | Ponto de entrada — lê dados e exibe o extrato |
+
+---
+
+### Relacionamento entre as classes
+
+`CartaoDeCredito` tem uma `List<Compras>` — uma lista de compras associada ao cartão:
+
+```java
+private List<Compras> compras = new ArrayList<>();
+```
+
+O método `lancaCompra` só adiciona se houver saldo:
+
+```java
+public boolean lancaCompra(Compras compras) {
+    if (this.saldo > compras.getValor()) {
+        this.saldo -= compras.getValor();
+        this.compras.add(compras);
+        return true;
+    }
+    return false;
+}
+```
+
+> O `return false` fora do `if` é importante — sem ele o método sempre retornaria `true` mesmo quando a compra falhou.
+
+---
+
+### Ordenação de listas
+
+Para ordenar uma lista com `Collections.sort()`, o Java precisa saber **como comparar** os objetos. Há duas formas:
+
+#### 1. `Comparable` — ordenação natural definida na própria classe
+
+A classe implementa `Comparable<T>` e define o método `compareTo`:
+
+```java
+public class Compras implements Comparable<Compras> {
+    @Override
+    public int compareTo(Compras outra) {
+        return Double.compare(this.valor, outra.valor); // ordena por valor crescente
+    }
+}
+```
+
+#### 2. `Comparator` — ordenação definida na hora do sort
+
+Sem alterar a classe, passa a lógica direto no `sort`:
+
+```java
+// Por valor
+Collections.sort(lista, Comparator.comparingDouble(Compras::getValor));
+
+// Por descrição
+Collections.sort(lista, Comparator.comparing(Compras::getDescricao));
+```
+
+#### Quando usar cada um
+
+| | `Comparable` | `Comparator` |
+|---|---|---|
+| Onde fica a lógica | Dentro da classe | Fora, na hora do sort |
+| Quando usar | Há uma ordem natural óbvia | Múltiplos critérios ou sem acesso à classe |
+
+---
+
+### O que o `Collections.sort` exige
+
+`Collections.sort(lista)` só funciona se os objetos implementam `Comparable`. Sem isso, o Java lança erro de compilação porque não sabe a regra de comparação.
+
+`Collections.sort(lista, comparator)` aceita qualquer objeto, pois a regra vem de fora.
+
+---
+
+### Fluxo do sistema
+
+```
+Usuário digita limite
+    → CartaoDeCredito criado com saldo = limite
+
+Loop: usuário digita descrição + valor
+    → Compras criada
+    → lancaCompra verifica saldo
+        → saldo suficiente: adiciona à lista, desconta saldo
+        → saldo insuficiente: encerra o loop
+
+Exibe extrato:
+    → Collections.sort ordena as compras
+    → for-each imprime cada compra
+    → exibe saldo final
+```

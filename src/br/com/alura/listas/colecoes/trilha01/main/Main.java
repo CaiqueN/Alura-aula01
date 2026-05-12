@@ -1,14 +1,17 @@
 package br.com.alura.listas.colecoes.trilha01.main;
 
-import br.com.alura.listas.colecoes.trilha01.atividade3.TesteProdutoPerecivel;
-import br.com.alura.listas.colecoes.trilha01.atividade4.TesteArrayListStrings;
-import br.com.alura.listas.colecoes.trilha01.atividade5.Cachorro;
-import br.com.alura.listas.colecoes.trilha01.atividade6.TesteProduto2;
-import br.com.alura.listas.colecoes.trilha01.atividade8.TestarForma;
-import br.com.alura.listas.colecoes.trilha01.atividade9.TestarContaBancaria;
+import br.com.alura.listas.colecoes.trilha01.produtoperecivel.TesteProdutoPerecivel;
+import br.com.alura.listas.colecoes.trilha01.arraylist.TesteArrayListStrings;
+import br.com.alura.listas.colecoes.trilha01.heranca.Cachorro;
+import br.com.alura.listas.colecoes.trilha01.precomedio.TesteProduto2;
+import br.com.alura.listas.colecoes.trilha01.forma.TestarForma;
+import br.com.alura.listas.colecoes.trilha01.contabancaria.TestarContaBancaria;
 import br.com.alura.listas.colecoes.trilha01.aula.TesteListaExemplo;
-import br.com.alura.listas.colecoes.trilha01.atividade.Pessoa;
-import br.com.alura.listas.colecoes.trilha01.atividade2.TesteProduto;
+import br.com.alura.listas.colecoes.trilha01.pessoa.Pessoa;
+import br.com.alura.listas.colecoes.trilha01.produto.TesteProduto;
+import br.com.alura.listas.colecoes.trilha01.desafio.Ordenacao;
+import br.com.alura.listas.colecoes.trilha01.desafio.UsoPolimorfismo;
+import br.com.alura.listas.colecoes.trilha01.hashmap.ExemploHashMap;
 
 import java.util.Scanner;
 
@@ -28,6 +31,10 @@ public class Main {
         System.out.println("7 - atividade - Preço médio de produtos");
         System.out.println("8 - atividade - Forma");
         System.out.println("9 - atividade - Conta Bancária");
+        System.out.println("10 - Exemplo HashMap ");
+        System.out.println("11 - Ordenação ");
+        System.out.println("12 - Uso Polimorfismo");
+        System.out.println("13 - Projeto final");
 
         int opcao = scanner.nextInt();
 
@@ -41,6 +48,9 @@ public class Main {
             case 7 -> TesteProduto2.executar();
             case 8 -> TestarForma.executar();
             case 9 -> TestarContaBancaria.executar();
+            case 10 -> ExemploHashMap.executar();
+            case 11 -> Ordenacao.executar();
+            case 12 -> UsoPolimorfismo.executar();
 
             default -> System.out.println("Opção inválida.");
         }
