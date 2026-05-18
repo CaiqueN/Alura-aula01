@@ -142,6 +142,237 @@ Para fazer isso em Java, utiliza-se bibliotecas como **Gson** ou **Jackson**, qu
 
 ---
 
+## O que é uma API?
+
+**API** significa *Application Programming Interface* — ou seja, **Interface de Programação de Aplicações**.
+
+Pense assim: um garçom em um restaurante não vai até a cozinha fazer a comida. Ele anota seu pedido, leva para a cozinha e traz o resultado para você. A API funciona exatamente como esse garçom — ela é o **intermediário** entre o seu programa e outro sistema.
+
+```
+Seu programa  →  faz um pedido (requisição)  →  API
+     ↑                                             ↓
+Seu programa  ←  recebe a resposta (response)  ←  API
+```
+
+### Como funciona na prática?
+
+1. **Você faz uma requisição** — envia uma URL com os parâmetros do que quer buscar
+2. **O servidor processa** — busca nos seus dados o que você pediu
+3. **A API retorna uma resposta** — normalmente em formato JSON
+
+### Os dois lados de uma requisição HTTP
+
+| Elemento | O que é |
+|---|---|
+| **URL** | O endereço do recurso que você quer acessar |
+| **Método HTTP** | A ação que você quer fazer (`GET` = buscar, `POST` = criar, `PUT` = atualizar, `DELETE` = apagar) |
+| **Parâmetros** | Filtros ou informações extras que você passa junto com a URL |
+| **Resposta (Response)** | O que o servidor devolve — geralmente um JSON |
+
+---
+
+## A API do OMDb — como ela funciona
+
+O **OMDb** (*Open Movie Database*) é uma API gratuita que fornece dados sobre filmes, séries e episódios. Para usá-la você precisa de uma **chave de acesso (API Key)**, obtida gratuitamente no site deles.
+
+### Estrutura da URL
+
+Toda requisição ao OMDb segue esse padrão:
+
+```
+http://www.omdbapi.com/?apikey=SUA_CHAVE&parametro=valor
+```
+
+### Parâmetros mais usados
+
+| Parâmetro | O que faz | Exemplo |
+|---|---|---|
+| `t` | Busca por **título exato** do filme | `t=Inception` |
+| `s` | Busca por **palavras-chave** (retorna lista) | `s=batman` |
+| `i` | Busca por **ID IMDb** | `i=tt1375666` |
+| `y` | Filtra por **ano** de lançamento | `y=2010` |
+| `type` | Filtra por tipo: `movie`, `series`, `episode` | `type=movie` |
+
+### Exemplo de URL completa
+
+Buscando o filme "Inception" de 2010:
+
+```
+http://www.omdbapi.com/?apikey=SUA_CHAVE&t=Inception&y=2010
+```
+
+### Exemplo de resposta JSON
+
+```json
+{
+  "Title": "Inception",
+  "Year": "2010",
+  "Rated": "PG-13",
+  "Released": "16 Jul 2010",
+  "Runtime": "148 min",
+  "Genre": "Action, Adventure, Sci-Fi",
+  "Director": "Christopher Nolan",
+  "Plot": "A thief who steals corporate secrets through the use of dream-sharing technology...",
+  "imdbRating": "8.8",
+  "imdbID": "tt1375666",
+  "Response": "True"
+}
+```
+
+O campo `"Response": "True"` indica que a busca foi bem-sucedida. Se o filme não for encontrado, a resposta será:
+
+```json
+{
+  "Response": "False",
+  "Error": "Movie not found!"
+}
+```
+
+---
+
+## Consultando a API do OMDb com o Postman
+
+O **Postman** é uma ferramenta visual que permite testar APIs sem precisar escrever código. É perfeito para explorar e entender como uma API funciona antes de integrá-la ao seu projeto.
+
+### Passo a passo
+
+**1. Abra o Postman e crie uma nova requisição**
+- Clique em `New` → `HTTP Request`
+
+**2. Configure o método e a URL**
+- Método: `GET` (estamos apenas buscando dados)
+- URL: `http://www.omdbapi.com/`
+
+**3. Adicione os parâmetros na aba "Params"**
+
+| KEY | VALUE |
+|---|---|
+| `apikey` | `sua_chave_aqui` |
+| `t` | `Inception` |
+| `y` | `2010` |
+
+O Postman monta a URL automaticamente:
+```
+http://www.omdbapi.com/?apikey=sua_chave&t=Inception&y=2010
+```
+
+**4. Clique em "Send"**
+
+O resultado aparece no painel inferior em formato JSON, já formatado e colorido para fácil leitura.
+
+### Dica: aba "Pretty" vs "Raw"
+
+- **Pretty** → JSON formatado e identado (mais fácil de ler)
+- **Raw** → texto puro exatamente como veio do servidor
+
+---
+
+## Integrando a API do OMDb em Java
+
+Java 11+ possui suporte nativo para fazer requisições HTTP sem precisar de bibliotecas externas. As três classes principais são:
+
+| Classe | Responsabilidade |
+|---|---|
+| `HttpClient` | O "navegador" — gerencia as conexões |
+| `HttpRequest` | O "pedido" — monta a URL e o método HTTP |
+| `HttpResponse` | A "resposta" — contém o corpo retornado pelo servidor |
+
+### Código completo comentado
+
+```java
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+
+public class ClienteHttp {
+
+    public static void main(String[] args) throws Exception {
+
+        // 1. Cria o cliente HTTP — é quem vai "abrir a conexão"
+        HttpClient client = HttpClient.newHttpClient();
+
+        // 2. Monta a requisição — define PARA ONDE e COMO enviar
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("http://www.omdbapi.com/?apikey=SUA_CHAVE&t=Inception"))
+                .GET()           // método HTTP GET (buscar dados)
+                .build();
+
+        // 3. Envia a requisição e captura a resposta como texto (String)
+        HttpResponse<String> response = client.send(
+                request,
+                HttpResponse.BodyHandlers.ofString()
+        );
+
+        // 4. Exibe o corpo da resposta — o JSON retornado pela API
+        System.out.println(response.body());
+    }
+}
+```
+
+### O que cada parte faz
+
+```java
+HttpClient.newHttpClient()
+// Cria um cliente padrão. É como abrir o navegador — pronto para fazer pedidos.
+
+HttpRequest.newBuilder()
+// Começa a "montar" a requisição, como preencher um formulário passo a passo.
+
+.uri(URI.create("..."))
+// Define o endereço (URL) que será acessado.
+
+.GET()
+// Define que o método HTTP é GET — apenas buscar, sem enviar dados.
+
+.build()
+// Finaliza e "constrói" o objeto HttpRequest com tudo configurado.
+
+client.send(request, HttpResponse.BodyHandlers.ofString())
+// Envia o pedido e diz que queremos receber a resposta como String (texto).
+
+response.body()
+// Retorna o conteúdo da resposta — no nosso caso, o JSON com os dados do filme.
+```
+
+### Fluxo completo visualizado
+
+```
+Main.java
+   │
+   ├─ HttpClient ──────── abre a conexão com o servidor
+   │
+   ├─ HttpRequest ──────── monta: URL + método GET
+   │
+   ├─ client.send() ────── envia e aguarda a resposta
+   │
+   └─ HttpResponse ──────── contém o JSON da API
+              │
+              └─ response.body() → String com o JSON
+```
+
+### Próximo passo natural: desserializar o JSON
+
+O `response.body()` retorna o JSON como uma `String`. Para transformar esse texto em um objeto Java (ex: um `Filme`), usamos a biblioteca **Gson**:
+
+```java
+import com.google.gson.Gson;
+
+// Classe que mapeia os campos do JSON
+record Filme(String Title, String Year, String imdbRating) {}
+
+// Converte o JSON em objeto Java
+Gson gson = new Gson();
+Filme filme = gson.fromJson(response.body(), Filme.class);
+
+System.out.println(filme.Title());      // Inception
+System.out.println(filme.imdbRating()); // 8.8
+```
+
+> Os nomes dos atributos do `record` precisam ser **idênticos** às chaves do JSON para o Gson mapear automaticamente.
+
+---
+
 ## Padrões de Projeto (Design Patterns)
 
 Padrões de projeto são **soluções reutilizáveis para problemas comuns** de desenvolvimento de software. Surgiram na década de 1990, quando desenvolvedores perceberam que projetos diferentes apresentavam problemas parecidos — e que esses problemas podiam ser resolvidos com soluções também parecidas.
