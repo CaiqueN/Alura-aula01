@@ -1,0 +1,47 @@
+src/br/com/alura/consumindo/api/trilha01/ApiGetMain.java
+  h_f4ce0c4b576d47 1-19,21-26
+  s_394e4b83b554c4::t_62e26e2e54db43 20
+APRENDIZADO_TRILHA_05_JSON_API.md
+  s_394e4b83b554c4::t_33d711e97aa59a 142-192
+  s_e69ccc4f96eb7f::t_192fb364413e0b 1-141
+EXERCICIO_01_REGISTRO_FRUTAS.md
+  s_394e4b83b554c4::t_f52ab24e079f79 1-267
+src/br/com/alura/consumindo/api/trilha01/ConsultaLivroGoogleBooks.java
+  s_394e4b83b554c4::t_a27de14b7b71fc 1-26
+src/br/com/alura/consumindo/api/trilha01/ConsultaCotacaoCripto.java
+  s_394e4b83b554c4::t_4e06ce677fac54 1-25
+src/br/com/alura/consumindo/api/trilha01/ConsultaReceitaTheMealDB.java
+  s_394e4b83b554c4::t_0471b88b248d7f 1-25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.8",
+  "base_commit_sha": "76c8710229a8eb1396ce511c2b066d31420a0c0b",
+  "prompts": {},
+  "humans": {
+    "h_73f86f3e881776": {
+      "author": "candasilva_meli"
+    },
+    "h_f4ce0c4b576d47": {
+      "author": "candasilva_meli <caique.ndasilva@mercadolivre.com>"
+    }
+  },
+  "sessions": {
+    "s_394e4b83b554c4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2851c110-e4ab-4d58-ac46-33f83875a2b6",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "candasilva_meli <caique.ndasilva@mercadolivre.com>"
+    },
+    "s_e69ccc4f96eb7f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2cb7e67e-10bd-44d7-8a7e-edf606a6f5e5",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "candasilva_meli <caique.ndasilva@mercadolivre.com>"
+    }
+  }
+}
