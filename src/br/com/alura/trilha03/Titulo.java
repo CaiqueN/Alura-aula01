@@ -1,7 +1,12 @@
 package br.com.alura.trilha03;
 
+import br.com.alura.consumindo.api.trilha01.TituloOmdb;
+import com.google.gson.annotations.SerializedName;
+
 public class Titulo implements Comparable<Titulo>{
+    @SerializedName("Title")
     private String nome;
+    @SerializedName("Year")
     private int anoDeLancamento;
     private boolean incluindoPlano;
     private double somaAvaliacao;
@@ -11,6 +16,11 @@ public class Titulo implements Comparable<Titulo>{
     public Titulo(int anoDeLancamento, String nome) {
         this.anoDeLancamento = anoDeLancamento;
         this.nome = nome;
+    }
+
+    public Titulo(TituloOmdb meuTituloOmdb) {
+        this.nome = meuTituloOmdb.title();
+        this.anoDeLancamento = Integer.valueOf(meuTituloOmdb.runtime().substring(0,2));
     }
 
     public int getTotalDeAvaliacao() {
@@ -79,13 +89,19 @@ public class Titulo implements Comparable<Titulo>{
         return duracaoMinutos;
     }
 
+    // código omitido…
+
     @Override
     public String toString() {
-        return nome + " (" + anoDeLancamento + ")";
+        return "nome='" + nome + '\'' +
+                ", anoDeLancamento=" + anoDeLancamento + "," +
+                " duração " + duracaoMinutos;
+
     }
 
     @Override
     public int compareTo(Titulo outroTitulo) {
         return this.getNome().compareTo(outroTitulo.getNome());
     }
+
 }

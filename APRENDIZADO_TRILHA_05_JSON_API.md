@@ -373,6 +373,126 @@ System.out.println(filme.imdbRating()); // 8.8
 
 ---
 
+## Bibliotecas e Frameworks em Java
+
+**Bibliotecas** são coleções de classes prontas que você importa para usar funcionalidades específicas no seu projeto — como o Gson para converter JSON, por exemplo. São distribuídas como arquivos `.jar` e gerenciadas pelo Maven ou Gradle.
+
+**Frameworks** vão além: fornecem uma arquitetura inteira para sua aplicação, com regras e padrões que guiam como você deve organizar o código.
+
+| | Biblioteca | Framework |
+|---|---|---|
+| **O que fornece** | Funcionalidades prontas | Arquitetura + funcionalidades |
+| **Quem manda** | Você chama quando quiser | O framework define a estrutura |
+| **Exemplo** | Gson, Jackson | Spring, Hibernate |
+
+### Frameworks populares em Java
+
+| Framework | Para que serve |
+|---|---|
+| **Spring** | Criação de aplicações Web e APIs REST complexas |
+| **Hibernate** | Integração com banco de dados relacional — mapeia objetos Java para tabelas automaticamente |
+
+> Bibliotecas e frameworks são assuntos mais avançados. Antes de mergulhar neles, é importante ter uma boa base de Java e Orientação a Objetos.
+
+---
+
+## Record — classe imutável em uma linha
+
+Lançado oficialmente no **Java 16** (experimental desde o Java 14), o `record` permite criar uma classe imutável de forma simples e enxuta — ideal para objetos que só carregam dados, sem comportamento.
+
+### Sem record — muito código
+
+```java
+public final class Telefone {
+    private final String ddd;
+    private final String numero;
+
+    public Telefone(String ddd, String numero) {
+        this.ddd = ddd;
+        this.numero = numero;
+    }
+
+    public String getDdd() { return this.ddd; }
+    public String getNumero() { return this.numero; }
+
+    @Override
+    public int hashCode() { return Objects.hash(ddd, numero); }
+
+    @Override
+    public boolean equals(Object obj) { ... }
+}
+```
+
+### Com record — uma linha
+
+```java
+public record Telefone(String ddd, String numero) {}
+```
+
+O Java gera automaticamente por baixo dos panos:
+
+| O que gera | Descrição |
+|---|---|
+| Atributos `private final` | Imutáveis por padrão |
+| Construtor | Com todos os atributos |
+| Getters | `ddd()` e `numero()` |
+| `equals` e `hashCode` | Comparação por valor |
+| `toString` | Representação legível |
+
+### Quando usar?
+
+Use `record` quando o objeto só vai **receber dados e ser lido**, sem precisar alterar nada depois — como dados vindos de uma API.
+
+```java
+// Perfeito para mapear resposta de API com Gson
+public record TituloOmdb(String title, String year, String runtime) {}
+```
+
+> **Limitação:** sem setters — os valores são definidos na criação e não mudam.
+
+---
+
+## Imutabilidade
+
+Um objeto imutável **não pode ser alterado depois de criado**. Classes como `String`, `Integer` e `Boolean` já são imutáveis por padrão em Java.
+
+### Com record fica óbvio
+
+```java
+public record Estudante(String nome, int idade) {}
+
+Estudante estudante1 = new Estudante("Alice", 19);
+
+estudante1.setNome("Maria"); // ERRO — não existe setter
+estudante1.nome = "Maria";   // ERRO — atributo final
+```
+
+Uma vez criado, os valores não mudam.
+
+### Mas a String não é imutável? Então por que isso funciona?
+
+```java
+String nome = "Maria";
+nome = "Alice"; // funciona?
+```
+
+Funciona, mas **não altera o objeto** — cria um novo objeto `String` com `"Alice"` e a variável passa a apontar para ele. O objeto `"Maria"` continua existindo na memória, apenas sem referência.
+
+```
+nome ──→ "Maria"     (objeto original, não foi alterado)
+nome ──→ "Alice"     (novo objeto criado, variável agora aponta para ele)
+```
+
+### Por que imutabilidade é importante?
+
+| Vantagem | Por quê |
+|---|---|
+| **Concorrência** | Sem necessidade de sincronização — vários threads podem ler sem risco |
+| **Segurança** | Protege contra alterações acidentais ou mal-intencionadas |
+| **Desempenho** | Objetos podem ser armazenados em cache e reutilizados |
+
+---
+
 ## Padrões de Projeto (Design Patterns)
 
 Padrões de projeto são **soluções reutilizáveis para problemas comuns** de desenvolvimento de software. Surgiram na década de 1990, quando desenvolvedores perceberam que projetos diferentes apresentavam problemas parecidos — e que esses problemas podiam ser resolvidos com soluções também parecidas.
