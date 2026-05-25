@@ -1,0 +1,59 @@
+src/br/com/alura/trilha05/exercicios/Livro.java
+  s_e30599818510cc::t_7c72de0985f09c 1-3
+src/br/com/alura/consumindo/api/trilha01/ApiGetMain.java
+  h_f4ce0c4b576d47 4,11-15,32-45
+  s_e30599818510cc::t_ae085787577c1e 23
+  s_e30599818510cc::t_c00f692e474af4 24
+.idea/compiler.xml
+  ai_agent 1-13
+.idea/encodings.xml
+  ai_agent 3-5
+.idea/misc.xml
+  ai_agent 3-10
+src/br/com/alura/trilha03/Titulo.java
+  h_f4ce0c4b576d47 3-5,7,9,21-23,92-93,96-97,99,106
+  s_e30599818510cc::t_2645030a49627a 98
+pom.xml
+  s_e30599818510cc::t_0674c212b19e4c 13-14
+  s_e30599818510cc::t_9daf765ce7af0e 21-26
+  s_e30599818510cc::t_7dd3e268980027 62-65
+  s_e30599818510cc::t_a36ef2a7008dcf 1-12,15-20,27-61,66
+.idea/jarRepositories.xml
+  ai_agent 1-20
+src/br/com/alura/trilha05/exercicios/ExercicioGsonMain.java
+  s_e30599818510cc::t_b61b24b8a6323d 1-62
+src/br/com/alura/trilha05/exercicios/Pessoa.java
+  s_e30599818510cc::t_5d0b2edb3af8a1 1-3
+src/br/com/alura/consumindo/api/trilha01/TituloOmdb.java
+  h_f4ce0c4b576d47 1-4
+src/br/com/alura/trilha05/exercicios/Editora.java
+  s_e30599818510cc::t_b94e64dcb62c25 1-3
+APRENDIZADO_TRILHA_05_JSON_API.md
+  s_e30599818510cc::t_e11200aa56163e 455-495
+  s_e30599818510cc::t_26c26e31942169 376-398
+  s_e30599818510cc::t_abf659b4cccb6c 399-454
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "be6cd9b015110f0e536d9ac8335ff97bacf22225",
+  "prompts": {},
+  "humans": {
+    "h_73f86f3e881776": {
+      "author": "candasilva_meli"
+    },
+    "h_f4ce0c4b576d47": {
+      "author": "candasilva_meli <caique.ndasilva@mercadolivre.com>"
+    }
+  },
+  "sessions": {
+    "s_e30599818510cc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "aa999bbe-6bc7-45de-b462-4530e967d724",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "candasilva_meli <caique.ndasilva@mercadolivre.com>"
+    }
+  }
+}
