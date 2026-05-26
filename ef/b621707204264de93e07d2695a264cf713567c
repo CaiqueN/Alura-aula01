@@ -1,0 +1,55 @@
+src/br/com/alura/consumindo/api/consumindoapi/desafio_trilha2/ConversaoJson.java
+  s_010530d8538a69::t_34c5f4012d271e 15
+  h_f4ce0c4b576d47 1-10,12-14,16-17
+  s_010530d8538a69::t_ee962ed6d08f3f 11
+src/br/com/alura/consumindo/api/consumindoapi/ConsultaLivroGoogleBooks.java
+  h_f4ce0c4b576d47 1
+src/br/com/alura/consumindo/api/consumindoapi/desafio_trilha2/Pessoa.java
+  h_f4ce0c4b576d47 1-5
+src/br/com/alura/consumindo/api/consumindoapi/Main.java
+  s_010530d8538a69::t_040b2fecc3ae8e 6,10-14,17-21,24-25
+  s_010530d8538a69::t_86b4cda636d3f3 1-2,5,7-9,26-27
+  h_f4ce0c4b576d47 3-4,15-16,22-23
+src/br/com/alura/consumindo/api/consumindoapi/ConsultaCotacaoCripto.java
+  h_f4ce0c4b576d47 1
+src/br/com/alura/consumindo/api/consumindoapi/desafio_trilha2/Editora.java
+  h_f4ce0c4b576d47 1-4
+src/br/com/alura/trilha03/Titulo.java
+  s_010530d8538a69::t_6c822a6521e730 23-24
+  h_f4ce0c4b576d47 3
+src/br/com/alura/consumindo/api/consumindoapi/ConsultaReceitaTheMealDB.java
+  h_f4ce0c4b576d47 1
+src/br/com/alura/consumindo/api/consumindoapi/TituloOmdb.java
+  h_f4ce0c4b576d47 1
+src/br/com/alura/consumindo/api/consumindoapi/desafio_trilha2/Livro.java
+  h_f4ce0c4b576d47 1-5
+src/br/com/alura/consumindo/api/consumindoapi/desafio_trilha2/EditoraLivro.java
+  h_f4ce0c4b576d47 1-15
+src/br/com/alura/consumindo/api/consumindoapi/ApiGetMain.java
+  s_010530d8538a69::t_4061d7bdbe3032 17-44
+  h_f4ce0c4b576d47 1,16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "efb621707204264de93e07d2695a264cf713567c",
+  "prompts": {},
+  "humans": {
+    "h_73f86f3e881776": {
+      "author": "candasilva_meli"
+    },
+    "h_f4ce0c4b576d47": {
+      "author": "candasilva_meli <caique.ndasilva@mercadolivre.com>"
+    }
+  },
+  "sessions": {
+    "s_010530d8538a69": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c2296d32-a5b0-4883-b146-a4204b595ce8",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "candasilva_meli <caique.ndasilva@mercadolivre.com>"
+    }
+  }
+}
