@@ -541,3 +541,323 @@ Lidam com a **comunicação entre objetos**, definindo como eles interagem em si
 - Código mais **legível** — outros desenvolvedores já conhecem os padrões
 - Código mais **flexível** — fácil de estender sem quebrar o que já existe
 - Código mais **fácil de manter** — estrutura previsível e testada
+
+---
+
+## O que são bibliotecas Java?
+
+Uma **biblioteca** é um conjunto de classes prontas que você adiciona ao projeto para usar funcionalidades que não existem por padrão no Java. Em vez de escrever do zero, você reutiliza código já criado, testado e mantido pela comunidade.
+
+Exemplos:
+- **Gson** → converte JSON em objetos Java e vice-versa
+- **Jackson** → mesma função, mais usado em projetos Spring
+- **OkHttp** → cliente HTTP mais simples que o nativo do Java
+
+> A biblioteca não define como seu projeto é organizado — você a usa quando e como quiser. Isso a diferencia de um Framework.
+
+---
+
+## Como instalar o Gson — via arquivo `.jar`
+
+Antes de ferramentas como Maven e Gradle, o jeito de usar uma biblioteca era baixar o arquivo `.jar` manualmente e adicioná-lo ao projeto.
+
+**Passo a passo no IntelliJ:**
+
+1. Acesse [mvnrepository.com](https://mvnrepository.com) e pesquise por `Gson`
+2. Escolha a versão desejada e clique em **jar** para baixar o arquivo
+3. No IntelliJ, abra: `File → Project Structure → Modules → Dependencies`
+4. Clique em `+` → `JARs or Directories` e selecione o arquivo `.jar` baixado
+5. Confirme com `Apply` → `OK`
+
+A partir daí, as classes do Gson ficam disponíveis para importação no projeto.
+
+> **Hoje o jeito mais comum é via Maven:** basta declarar a dependência no `pom.xml` e o Maven baixa e configura o jar automaticamente.
+
+```xml
+<dependency>
+    <groupId>com.google.code.gson</groupId>
+    <artifactId>gson</artifactId>
+    <version>2.11.0</version>
+</dependency>
+```
+
+---
+
+## Usando o Gson para converter JSON em objeto Java
+
+Com o Gson, você converte uma `String` JSON em um objeto Java em duas etapas:
+
+**1. Criar uma classe ou record que represente os campos do JSON**
+
+```java
+public record Pessoa(String nome, int idade, String cidade) {}
+```
+
+Os nomes dos campos precisam ser **iguais** às chaves do JSON.
+
+**2. Usar `gson.fromJson()` para converter**
+
+```java
+String json = "{\"nome\":\"Rodrigo\",\"idade\":20,\"cidade\":\"Brasília\"}";
+
+Gson gson = new Gson();
+Pessoa pessoa = gson.fromJson(json, Pessoa.class);
+
+System.out.println(pessoa.nome());   // Rodrigo
+System.out.println(pessoa.idade());  // 20
+```
+
+Se os nomes do JSON não baterem com os atributos da classe, use a anotação `@SerializedName`:
+
+```java
+public class Titulo {
+    @SerializedName("Title")   // chave no JSON é "Title" (maiúsculo)
+    private String nome;       // mas o atributo Java é "nome"
+}
+```
+
+---
+
+## Flexibilizando a conversão com GsonBuilder
+
+Por padrão, o `new Gson()` é estrito. Para cenários onde o JSON pode ter campos ausentes ou formato menos rígido, use o `GsonBuilder` para configurar o comportamento antes de criar o Gson:
+
+```java
+Gson gson = new GsonBuilder()
+        .setLenient()   // tolerante a campos ausentes e formato flexível
+        .create();
+```
+
+### Comportamentos com `GsonBuilder`
+
+| Situação | Sem configuração | Com `setLenient()` |
+|---|---|---|
+| Campo ausente no JSON | Usa valor padrão (`0`, `null`) | Usa valor padrão, sem erro |
+| Campo extra no JSON | Ignora (já é padrão) | Ignora |
+| JSON com formato impreciso | Pode lançar erro | Aceita |
+
+### Troque `int` por `Integer` para detectar campos ausentes
+
+```java
+public record Pessoa(String nome, Integer idade, String cidade) {}
+//                                ^^^^^^^
+// Se "idade" não vier no JSON → null (e não 0)
+// Isso permite saber se o campo realmente estava ausente
+```
+
+| Tipo | Campo ausente no JSON vira |
+|---|---|
+| `int` | `0` — não dá para saber se veio ou estava faltando |
+| `Integer` | `null` — explícito que não veio |
+
+---
+
+## Hierarquia de Exceções no Java
+
+Todas as exceções do Java seguem uma hierarquia de classes. Entender essa hierarquia é essencial para saber o que capturar e em qual ordem.
+
+```
+Throwable
+├── Error                        → erros irrecuperáveis do sistema
+│   └── OutOfMemoryError
+│   └── StackOverflowError
+└── Exception                    → problemas que o código pode tratar
+    ├── IOException              → checked (verificada)
+    │   └── FileNotFoundException
+    ├── SQLException             → checked (verificada)
+    └── RuntimeException         → unchecked (não verificada)
+        ├── NullPointerException
+        ├── IllegalArgumentException
+        │   └── NumberFormatException
+        └── IndexOutOfBoundsException
+```
+
+---
+
+### Checked Exceptions (Verificadas)
+
+São subclasses diretas de `Exception`. O compilador **obriga** você a tratá-las — com `try-catch` ou declarando `throws` na assinatura do método.
+
+```java
+// O compilador exige tratamento — IOException é checked
+public void lerArquivo() throws IOException {
+    // leitura de arquivo
+}
+```
+
+Exemplo: `IOException` — problema de leitura ou escrita de dados (arquivo, rede).
+
+---
+
+### Unchecked Exceptions (Não Verificadas)
+
+São subclasses de `RuntimeException`. O compilador **não obriga** tratamento — são erros lógicos no código que poderiam ser evitados.
+
+| Exceção | Quando ocorre |
+|---|---|
+| `NullPointerException` | Acessar atributo ou método de um objeto `null` |
+| `NumberFormatException` | Converter texto inválido para número (`"abc"` → `int`) |
+| `IllegalArgumentException` | Passar argumento inválido para um método (ex: URI malformada) |
+| `IndexOutOfBoundsException` | Acessar índice inexistente em lista ou array |
+
+---
+
+### Error
+
+Representam falhas **irrecuperáveis** do sistema — não devem ser capturadas pelo código.
+
+| Erro | O que significa |
+|---|---|
+| `OutOfMemoryError` | Java não conseguiu memória suficiente do sistema |
+| `StackOverflowError` | Recursão infinita esgotou a pilha de execução |
+
+---
+
+### Ordem dos catch — mais específico primeiro
+
+Como as exceções seguem herança, a ordem dos blocos `catch` importa. O mais específico (classe filha) sempre vem antes do mais genérico (classe mãe).
+
+```java
+try {
+    // código
+} catch (NumberFormatException e) {      // filha — mais específico
+    System.out.println("Número inválido");
+} catch (IllegalArgumentException e) {   // mãe — mais genérico
+    System.out.println("Argumento inválido");
+}
+```
+
+Se inverter a ordem, o `catch (IllegalArgumentException)` captura tudo — inclusive o `NumberFormatException` — e o primeiro `catch` nunca executa. O compilador até avisa sobre isso.
+
+> **Regra:** filha antes da mãe. Específico antes do genérico.
+
+---
+
+### Exemplo prático — IOException e FileNotFoundException
+
+```java
+try {
+    // abre um arquivo
+} catch (FileNotFoundException e) {    // filha — arquivo não encontrado
+    System.out.println("Arquivo não existe");
+} catch (IOException e) {             // mãe — qualquer outro erro de I/O
+    System.out.println("Erro de leitura");
+}
+```
+
+Um `catch (IOException)` sozinho também capturaria o `FileNotFoundException` — pois toda `FileNotFoundException` é uma `IOException`. Mas o inverso não vale: `catch (FileNotFoundException)` **não** captura `IOException`.
+
+---
+
+## Multi-catch — capturando várias exceções em um bloco só
+
+Introduzido no **Java 7**, o multi-catch permite agrupar exceções diferentes num único `catch` usando o `|`, evitando repetição de código quando o tratamento é o mesmo.
+
+**Sem multi-catch — repetição:**
+```java
+try {
+    metodoQuePodeLancarExcecao();
+} catch (NumberFormatException e) {
+    System.out.println("tratando erro...");
+} catch (IllegalArgumentException e) {
+    System.out.println("tratando erro...");
+}
+```
+
+**Com multi-catch — conciso:**
+```java
+try {
+    metodoQuePodeLancarExcecao();
+} catch (NullPointerException | IllegalArgumentException e) {
+    System.out.println("tratando erro...");
+}
+```
+
+Se qualquer uma das exceções listadas for lançada, o mesmo bloco `catch` é executado.
+
+### Regra importante
+
+Multi-catch **não é permitido** entre exceções que têm relação de herança entre si. O compilador rejeita porque a mais genérica já capturaria a mais específica:
+
+```java
+// ❌ não compila — NumberFormatException é filha de IllegalArgumentException
+} catch (NumberFormatException | IllegalArgumentException e) { }
+
+// ✅ correto — NullPointerException e IllegalArgumentException não têm herança entre si
+} catch (NullPointerException | IllegalArgumentException e) { }
+```
+
+---
+
+## Stack Trace — lendo o rastro do erro
+
+Quando o Java lança uma exceção sem tratamento, ele imprime no console um **stack trace** — o rastro da pilha de execução. Parece assustador no começo, mas contém tudo que você precisa para encontrar o problema.
+
+```
+Exception in thread "main" java.lang.NumberFormatException: For input string: "2018-"
+    at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+    at java.base/java.lang.Integer.parseInt(Integer.java:668)
+    at java.base/java.lang.Integer.valueOf(Integer.java:999)
+    at br.com.alura.screenmatch.modelos.Titulo.<init>(Titulo.java:22)
+    at br.com.alura.screenmatch.principal.PrincipalComBusca.main(PrincipalComBusca.java:40)
+```
+
+### Como ler — de baixo para cima
+
+| Linha | O que significa |
+|---|---|
+| Última linha | **Onde o problema começou** — seu código, arquivo e linha |
+| Penúltima | Próximo método chamado — `<init>` significa o construtor |
+| Demais linhas | Chamadas internas do Java até o ponto onde a exceção foi lançada |
+| Primeira linha | **Nome da exceção** e a mensagem de erro |
+
+**Leitura do exemplo acima:**
+1. `PrincipalComBusca.java:40` → o problema começa aqui: `new Titulo(meuTituloOmdb)`
+2. `Titulo.java:22` → dentro do construtor: `Integer.valueOf(meuTituloOmdb.year())`
+3. Java tentou converter `"2018-"` para inteiro → impossível → `NumberFormatException`
+
+> Na IDE você pode clicar no link `(Titulo.java:22)` e ela abre direto na linha do problema.
+
+---
+
+## Try/Catch — tratando exceções
+
+O `try/catch` permite especificar o que fazer quando uma exceção ocorre, em vez de deixar o programa parar.
+
+```java
+try {
+    // código que pode lançar exceção
+    Titulo meuTitulo = new Titulo(meuTituloOmdb);
+    System.out.println("Titulo convertido");
+    System.out.println(meuTitulo);
+} catch (NumberFormatException e) {
+    // o que fazer se der erro
+    System.out.println("Aconteceu um erro: ");
+    System.out.println(e.getMessage());
+}
+
+System.out.println("O programa finalizou corretamente!");
+```
+
+**Resultado quando há erro:**
+```
+Aconteceu um erro:
+For input string: "2018-"
+O programa finalizou corretamente!
+```
+
+Sem o `try/catch`, o programa pararia na exceção e não chegaria à última linha. Com ele, o erro é capturado e a execução continua normalmente.
+
+### Escopo — variáveis dentro do try
+
+Uma variável declarada **dentro** do `try` só existe dentro dele:
+
+```java
+try {
+    Titulo meuTitulo = new Titulo(meuTituloOmdb); // existe só aqui dentro
+    System.out.println(meuTitulo); // ✅ funciona
+}
+System.out.println(meuTitulo); // ❌ erro de compilação — fora do escopo
+```
+
+Por isso, tudo que depende de `meuTitulo` precisa estar dentro do mesmo bloco `try`.
