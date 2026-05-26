@@ -1,4 +1,4 @@
-package br.com.alura.consumindo.api.trilha01;
+package br.com.alura.consumindo.api.consumindoapi;
 
 import java.io.IOException;
 import java.net.URI;
@@ -7,14 +7,15 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Scanner;
 
-public class ConsultaCotacaoCripto {
+public class ConsultaLivroGoogleBooks {
 
     public static void executar() throws IOException, InterruptedException {
         Scanner leitura = new Scanner(System.in);
-        System.out.println("Digite o nome da criptomoeda para a cotação (por exemplo, bitcoin): ");
-        var criptoNome = leitura.nextLine();
+        System.out.println("Digite o título do livro para a busca: ");
+        var tituloLivro = leitura.nextLine();
 
-        String endereco = "https://api.coingecko.com/api/v3/simple/price?ids=" + criptoNome + "&vs_currencies=usd";
+        String chave = "CHAVE_FICARÁ_AQUI";
+        String endereco = "https://www.googleapis.com/books/v1/volumes?q=" + tituloLivro + "&key=" + chave;
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(endereco)).build();

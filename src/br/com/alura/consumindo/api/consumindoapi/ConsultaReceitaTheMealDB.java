@@ -1,4 +1,4 @@
-package br.com.alura.consumindo.api.trilha01;
+package br.com.alura.consumindo.api.consumindoapi;
 
 import java.io.IOException;
 import java.net.URI;
