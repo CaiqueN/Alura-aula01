@@ -1,0 +1,30 @@
+APRENDIZADO_TRILHA_05_JSON_API.md
+  s_010530d8538a69::t_6b7a0d817db279 544-651
+  s_010530d8538a69::t_d595a9108fffee 652-654,792-863
+  s_010530d8538a69::t_c2b66aac38ee23 655-751
+  s_010530d8538a69::t_9424db9a29fe5d 752-791
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "15da05d3438d621f80bcea5a3d50fa451ae75d06",
+  "prompts": {},
+  "humans": {
+    "h_73f86f3e881776": {
+      "author": "candasilva_meli"
+    },
+    "h_f4ce0c4b576d47": {
+      "author": "candasilva_meli <caique.ndasilva@mercadolivre.com>"
+    }
+  },
+  "sessions": {
+    "s_010530d8538a69": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c2296d32-a5b0-4883-b146-a4204b595ce8",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "candasilva_meli <caique.ndasilva@mercadolivre.com>"
+    }
+  }
+}
