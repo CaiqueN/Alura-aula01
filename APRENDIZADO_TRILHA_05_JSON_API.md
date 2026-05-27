@@ -335,6 +335,60 @@ response.body()
 // Retorna o conteúdo da resposta — no nosso caso, o JSON com os dados do filme.
 ```
 
+### Caracteres válidos em URL e o `.replace()`
+
+Uma URL segue um padrão (RFC 2396) que define quais caracteres são permitidos. Alguns têm **significado especial** e outros são simplesmente **proibidos**:
+
+| Caractere | Papel na URL |
+|---|---|
+| `?` | inicia os parâmetros |
+| `&` | separa parâmetros |
+| `=` | separa chave do valor |
+| `/` | separa partes do caminho |
+| `[` `]` `{` `}` `\` | **inválidos** — sem papel definido |
+
+O espaço também é inválido. Por isso o código faz:
+
+```java
+String endereco = "https://www.omdbapi.com/?t=" + busca.replace(" ", "+") + "&apikey=...";
+```
+
+O `.replace(" ", "+")` **não é exigência do método** — ele é só um `String.replace()` comum que substitui um texto por outro:
+
+```java
+"Game of Thrones".replace(" ", "+")
+// resultado: "Game+of+Thrones"
+```
+
+O motivo de usar `+` é uma **convenção da web**: espaços em parâmetros de URL são representados como `+` ou `%20`. O servidor da OMDB espera receber dessa forma.
+
+Você poderia escrever `.replace(" ", "%20")` e funcionaria igualmente.
+
+#### O que acontece com caracteres inválidos?
+
+Se o usuário digitar algo com `[` ou `]`, a URL montada fica inválida e `URI.create()` lança `IllegalArgumentException`:
+
+```java
+// usuário digitou: [Game of Thrones]
+// URL montada: https://www.omdbapi.com/?t=[Game+of+Thrones]&apikey=...
+//                                          ↑ inválido — URI.create() rejeita
+URI.create(endereco);  // ← lança IllegalArgumentException
+```
+
+#### Solução mais robusta: `URLEncoder`
+
+Para tratar qualquer caractere inválido automaticamente, use `URLEncoder.encode()` em vez do `.replace()` manual:
+
+```java
+import java.net.URLEncoder;
+
+String busca = URLEncoder.encode(busca, "UTF-8");
+// "Game of Thrones" → "Game+of+Thrones"
+// "[Game]"          → "%5BGame%5D"       ← converte automaticamente
+```
+
+---
+
 ### Fluxo completo visualizado
 
 ```
@@ -731,6 +785,42 @@ Se inverter a ordem, o `catch (IllegalArgumentException)` captura tudo — inclu
 
 > **Regra:** filha antes da mãe. Específico antes do genérico.
 
+#### Erro clássico — `Exception` antes de tudo
+
+```java
+try {
+    Pessoa p = null;
+    System.out.println(p.getNome());
+} catch (Exception e) {                        // ❌ genérica demais — vem primeiro
+    System.out.println("Exception");
+} catch (ArrayIndexOutOfBoundsException e) {   // ❌ nunca alcançado
+    System.out.println("Array Index Out Of Bounds Exception");
+} catch (NullPointerException e) {             // ❌ nunca alcançado
+    System.out.println("Null Pointer Exception");
+}
+```
+
+**Por que não compila?**
+
+`Exception` é superclasse de praticamente tudo. Quando ela vem primeiro, o Java sabe que os blocos abaixo jamais serão alcançados — qualquer exceção já teria sido capturada pelo primeiro `catch`. O compilador rejeita o código com erro: *"Exception has already been caught"*.
+
+**Ordem correta — específico antes do genérico:**
+
+```java
+try {
+    Pessoa p = null;
+    System.out.println(p.getNome());
+} catch (NullPointerException e) {             // filha — mais específico
+    System.out.println("Null Pointer Exception");
+} catch (ArrayIndexOutOfBoundsException e) {   // filha — mais específico
+    System.out.println("Array Index Out Of Bounds Exception");
+} catch (Exception e) {                        // mãe — pega qualquer outra
+    System.out.println("Exception");
+}
+```
+
+O `catch (Exception e)` no final funciona como um **"pega tudo"** — útil para capturar exceções inesperadas que você não previu.
+
 ---
 
 ### Exemplo prático — IOException e FileNotFoundException
@@ -775,17 +865,102 @@ try {
 
 Se qualquer uma das exceções listadas for lançada, o mesmo bloco `catch` é executado.
 
-### Regra importante
+### Regra importante — multi-catch e herança
 
-Multi-catch **não é permitido** entre exceções que têm relação de herança entre si. O compilador rejeita porque a mais genérica já capturaria a mais específica:
+Multi-catch **não é permitido** entre exceções que têm relação de herança entre si. O compilador rejeita porque a classe pai já capturaria a filha — agrupá-las seria redundante e ambíguo.
+
+#### Por que isso importa?
+
+Considere esta hierarquia:
+
+```
+Exception
+└── RuntimeException
+    └── IllegalArgumentException
+        └── NumberFormatException   ← filha de IllegalArgumentException
+```
+
+`NumberFormatException` **é uma** `IllegalArgumentException`. Se você colocar as duas no mesmo multi-catch, o Java não consegue determinar qual das duas regras deve se aplicar — e simplesmente recusa compilar.
+
+#### Exemplos que não compilam
 
 ```java
-// ❌ não compila — NumberFormatException é filha de IllegalArgumentException
-} catch (NumberFormatException | IllegalArgumentException e) { }
-
-// ✅ correto — NullPointerException e IllegalArgumentException não têm herança entre si
-} catch (NullPointerException | IllegalArgumentException e) { }
+// ❌ ERRO DE COMPILAÇÃO
+// NumberFormatException herda de IllegalArgumentException
+try {
+    Integer.parseInt("abc");
+} catch (NumberFormatException | IllegalArgumentException e) {
+    System.out.println("erro: " + e.getMessage());
+}
+// Mensagem do compilador:
+// "Alternatives in a multi-catch statement cannot be related by subclassing"
 ```
+
+```java
+// ❌ ERRO DE COMPILAÇÃO
+// IOException herda de Exception
+try {
+    // ...
+} catch (IOException | Exception e) {
+    System.out.println("erro");
+}
+```
+
+#### A solução: blocos catch separados (do mais específico para o mais genérico)
+
+Quando há herança, use blocos separados e coloque a **exceção filha primeiro** — senão o bloco do pai captura tudo e o bloco da filha nunca é alcançado:
+
+```java
+// ✅ correto — filha antes, pai depois
+try {
+    Integer.parseInt("abc");
+} catch (NumberFormatException e) {
+    System.out.println("formato numérico inválido: " + e.getMessage());
+} catch (IllegalArgumentException e) {
+    System.out.println("argumento ilegal genérico: " + e.getMessage());
+}
+```
+
+```java
+// ❌ lógica errada — pai antes bloqueia a filha (nunca chega no segundo catch)
+try {
+    Integer.parseInt("abc");
+} catch (IllegalArgumentException e) {
+    System.out.println("captura tudo aqui, inclusive NumberFormatException");
+} catch (NumberFormatException e) {   // ← nunca executado / erro de compilação
+    System.out.println("nunca chega aqui");
+}
+```
+
+#### Quando multi-catch é permitido
+
+Só funciona com exceções que **não têm relação de herança** entre si:
+
+```java
+// ✅ NullPointerException e IllegalArgumentException não se relacionam por herança
+try {
+    metodoQuePodeLancarExcecao();
+} catch (NullPointerException | IllegalArgumentException e) {
+    System.out.println("tratando erro: " + e.getMessage());
+}
+
+// ✅ IOException e NumberFormatException não se relacionam por herança
+try {
+    String linha = lerArquivo();
+    int valor = Integer.parseInt(linha);
+} catch (IOException | NumberFormatException e) {
+    System.out.println("erro de leitura ou formato: " + e.getMessage());
+}
+```
+
+#### Resumo visual
+
+| Situação | Permitido? | Motivo |
+|---|---|---|
+| `NumberFormatException \| IllegalArgumentException` | ❌ | herança direta |
+| `IOException \| Exception` | ❌ | herança direta |
+| `NullPointerException \| IllegalArgumentException` | ✅ | sem herança entre si |
+| `IOException \| NumberFormatException` | ✅ | sem herança entre si |
 
 ---
 

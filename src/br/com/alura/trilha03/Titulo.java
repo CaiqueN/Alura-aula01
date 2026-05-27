@@ -1,12 +1,10 @@
 package br.com.alura.trilha03;
 
 import br.com.alura.consumindo.api.consumindoapi.TituloOmdb;
-import com.google.gson.annotations.SerializedName;
+
 
 public class Titulo implements Comparable<Titulo>{
-    @SerializedName("Title")
     private String nome;
-    @SerializedName("Year")
     private int anoDeLancamento;
     private boolean incluindoPlano;
     private double somaAvaliacao;
@@ -20,8 +18,11 @@ public class Titulo implements Comparable<Titulo>{
 
     public Titulo(TituloOmdb meuTituloOmdb) {
         this.nome = meuTituloOmdb.title();
-        this.anoDeLancamento = Integer.valueOf(meuTituloOmdb.year());
-        this.duracaoMinutos = Integer.valueOf(meuTituloOmdb.runtime().replace(" min", "").trim());
+        if(meuTituloOmdb.year().length() > 4) {
+            throw new ErroDecoversaoDeAnoException("Nao foi possivel converter o ano");
+        }
+
+        this.anoDeLancamento = Integer.valueOf(meuTituloOmdb.runtime().substring(0,2));
     }
 
     public int getTotalDeAvaliacao() {
