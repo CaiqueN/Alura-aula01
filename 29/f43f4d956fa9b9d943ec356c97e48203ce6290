@@ -1,0 +1,54 @@
+src/br/com/alura/consumindo/api/consumindoapi/desafio_trilha2/desafio2_trilha2/ExercicioDivisao.java
+  h_f4ce0c4b576d47 1-22
+APRENDIZADO_TRILHA_05_JSON_API.md
+  s_1e1b0aa2cf0e2c::t_e0ef636f5feb57 868-870,872-922,925-935,937-953,956-963
+  s_1e1b0aa2cf0e2c::t_e8242d7f26343b 788-823
+  s_1e1b0aa2cf0e2c::t_8df94ccf80b158 338-391
+src/br/com/alura/trilha03/Titulo.java
+  h_f4ce0c4b576d47 21-24
+  s_010530d8538a69::t_1345a8c7cc99dc 25
+src/br/com/alura/consumindo/api/consumindoapi/desafio_trilha2/desafio2_trilha2/ExercicioSenha.java
+  h_f4ce0c4b576d47 1-26
+src/br/com/alura/consumindo/api/consumindoapi/Main.java
+  s_010530d8538a69::t_83c5ccdc4564a5 22-23,25-27,31-34
+  h_f4ce0c4b576d47 4-5,18-19,28-29
+src/br/com/alura/trilha03/ErroDecoversaoDeAnoException.java
+  s_1e1b0aa2cf0e2c::t_86641f70addc04 6
+  h_f4ce0c4b576d47 1-5,7-9
+src/br/com/alura/consumindo/api/consumindoapi/desafio_trilha2/desafio2_trilha2/SenhaExecepition.java
+  h_f4ce0c4b576d47 1-10
+src/br/com/alura/consumindo/api/consumindoapi/ApiGetMain.java
+  h_f4ce0c4b576d47 10,24-26,33,35,39,42-58,61-62
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "29f43f4d956fa9b9d943ec356c97e48203ce6290",
+  "prompts": {},
+  "humans": {
+    "h_73f86f3e881776": {
+      "author": "candasilva_meli"
+    },
+    "h_f4ce0c4b576d47": {
+      "author": "candasilva_meli <caique.ndasilva@mercadolivre.com>"
+    }
+  },
+  "sessions": {
+    "s_010530d8538a69": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c2296d32-a5b0-4883-b146-a4204b595ce8",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "candasilva_meli <caique.ndasilva@mercadolivre.com>"
+    },
+    "s_1e1b0aa2cf0e2c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "59f1417e-7812-45fc-ba13-6b7ac8a17f65",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "candasilva_meli <caique.ndasilva@mercadolivre.com>"
+    }
+  }
+}
