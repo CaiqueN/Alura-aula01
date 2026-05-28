@@ -715,3 +715,12 @@ System.out.println(lib.getAutor());  // Kishimoto
 | Método de negócio | Lógica que altera o estado do objeto encapsulada dentro da própria classe |
 
 ---
+
+## Exceptions — O que aprendemos
+
+- O que são exceptions no Java e como tratá-las com o bloco `try/catch`
+- Como capturar diferentes tipos de exceptions que podem acontecer no código
+- Como criar uma classe exception personalizada
+- A realizar uma validação e lançar uma exception em caso de erro
+
+---

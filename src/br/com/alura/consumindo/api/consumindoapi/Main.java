@@ -1,6 +1,7 @@
 package br.com.alura.consumindo.api.consumindoapi;
 
 import br.com.alura.consumindo.api.consumindoapi.desafio_trilha2.EditoraLivro;
+import br.com.alura.consumindo.api.consumindoapi.desafio_trilha2.desafio2_trilha2.ConsultaGitHub;
 import br.com.alura.consumindo.api.consumindoapi.desafio_trilha2.desafio2_trilha2.ExercicioDivisao;
 import br.com.alura.consumindo.api.consumindoapi.desafio_trilha2.desafio2_trilha2.ExercicioSenha;
 
@@ -17,6 +18,7 @@ public class Main {
         System.out.println("2 - Busca editora e livro");
         System.out.println("3- Busca exercicio de divisao");
         System.out.println("4 - Busca senha exception");
+        System.out.println("5 - Consulta GitHub");
 
 
         try {
@@ -27,6 +29,7 @@ public class Main {
                 case 2 -> EditoraLivro.executar();
                 case 3 -> ExercicioDivisao.executar();
                 case 4 -> ExercicioSenha.executar();
+                case 5 -> ConsultaGitHub.executar();
 
                 default -> System.out.println("Opção inválida.");
             }
