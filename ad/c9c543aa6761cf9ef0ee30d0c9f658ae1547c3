@@ -1,0 +1,34 @@
+src/br/com/alura/consumindo/api/consumindoapi/Main.java
+  h_f4ce0c4b576d47 4,32
+  s_13de7186fff8a6::t_02e697363675e4 21
+APRENDIZADO_TRILHA_02.md
+  s_13de7186fff8a6::t_c1b46db272774e 717-725
+src/br/com/alura/consumindo/api/consumindoapi/desafio_trilha2/desafio2_trilha2/ConsultaGitHub.java
+  h_f4ce0c4b576d47 1-43
+src/br/com/alura/consumindo/api/consumindoapi/desafio_trilha2/desafio2_trilha2/ErroConsultaGitHubException.java
+  h_f4ce0c4b576d47 1-7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "adc9c543aa6761cf9ef0ee30d0c9f658ae1547c3",
+  "prompts": {},
+  "humans": {
+    "h_73f86f3e881776": {
+      "author": "candasilva_meli"
+    },
+    "h_f4ce0c4b576d47": {
+      "author": "candasilva_meli <caique.ndasilva@mercadolivre.com>"
+    }
+  },
+  "sessions": {
+    "s_13de7186fff8a6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "aa740b74-c972-4859-b821-6f8564f5a394",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "candasilva_meli <caique.ndasilva@mercadolivre.com>"
+    }
+  }
+}
